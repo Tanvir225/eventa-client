@@ -1,16 +1,13 @@
 /* eslint-disable react/prop-types */
+import { Link } from "react-router-dom";
 import label from "../../../assets/label-3.png"
-const Heading = ({heading,subHeading}) => {
+const Heading = ({ text, seeAll }) => {
   return (
-    <div className="space-y-3  my-12 py-3 w-[85%] md:w-[65%] lg:w-[50%]  mx-auto">
-      <h1 className="text-2xl font-bold text-[#FF69B4] text-center">
-        {heading}
-      </h1>
-      
-      <p className="text-lg font-semibold text-[#808080] text-center">
-        {subHeading}
-      </p>
-      <img src={label} alt="label" />
+    <div className="flex items-center justify-between my-10">
+      <h2 className="font-bold text-2xl lg:text-3xl text-neutral-600 border-b-4 border-sky-300  py-5 border-dashed  lg:w-[16%]">{text}</h2>
+      {
+        seeAll ? <Link to={"/"} className="text-center font-semibold text-white px-4 py-1 rounded-lg hover:bg-black bg-sky-500">{seeAll}</Link> : ""
+      }
     </div>
   );
 };

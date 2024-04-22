@@ -56,7 +56,7 @@ const Navbar = () => {
             <Link to={"/login"}><Button width={"100"} text={"Login"}></Button></Link>
           )}
           {navbarFixed ? (
-            <ul className=" justify-center flex w-full gap-4 items-center lg:hidden ">
+            <ul className=" justify-center flex w-full gap-4  items-center  lg:hidden ">
               <UserLink> </UserLink>
             </ul>
           ) : (

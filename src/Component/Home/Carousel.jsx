@@ -56,7 +56,7 @@ const Carousel = () => {
   return (
     <section>
       <div
-        className="w-full h-96 sm:h-96 md:h-[550px] pb-5 flex flex-col items-center justify-center gap-5 lg:gap-10 bg-cover bg-center  before:absolute before:bg-neutral-900/60 before:inset-0 transform duration-1000 ease-linear"
+        className="w-full h-fit sm:h-96 md:h-[550px] pb-5 flex flex-col items-center justify-center gap-5 lg:gap-10 bg-cover bg-center  before:absolute before:bg-neutral-900/60 before:inset-0 transform duration-1000 ease-linear"
         style={{ backgroundImage: `url(${sliders[currentSlider].img})` }}
       >
         {/* text container here */}

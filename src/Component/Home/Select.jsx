@@ -13,7 +13,7 @@ const Select = ({options,title}) => {
       {/* dropdown - btn */}
       <div
         onClick={() => setIsOpen(!isOpen)}
-        className="flex w-44 md:w-96 items-center justify-between rounded-xl bg-white px-5 py-2 border"
+        className="flex w-40 md:w-80  items-center justify-between rounded-xl bg-white px-5 py-2 border"
       >
         <h1 className=" text-gray-600">{selectedValue}</h1>
         <svg

@@ -37,7 +37,7 @@ const UserLink = () => {
       <li className="">
         <NavLink
           to={"/contact"}
-          className="flex flex-col justify-center items-center"
+          className="hidden md:flex flex-col justify-center items-center "
         >
           <MdChatBubbleOutline 
             size={26}
