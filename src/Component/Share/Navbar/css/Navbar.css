@@ -1,0 +1,34 @@
+.navbar {
+  position: absolute;
+  top: 0;
+  /* Initially lays down on the banner or hero section */
+  left: 0;
+  width: 100%;
+  transition: top 0.3s;
+  z-index: 1000;
+  color: white;
+  height: 100px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+}
+
+li .active {
+  /* color: rgb(119, 213, 250); */
+  color: #FF69B4;
+}
+
+.navbar.fixedd {
+  position: fixed;
+  /* Fixed on top upon scrolling */
+  top: 0;
+  color: black;
+  /* Change color when fixed */
+}
+
+.fixedd li.active {
+  color: red !important
+}
+
