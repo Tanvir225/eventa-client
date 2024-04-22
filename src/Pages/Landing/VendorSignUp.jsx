@@ -2,7 +2,7 @@ import { useState } from "react";
 import { useForm } from "react-hook-form";
 import { FaArrowLeft, FaEye, FaEyeSlash } from "react-icons/fa";
 import { Link } from "react-router-dom";
-import animation from "../assets/landing_animation.json";
+import animation from "../../assets/landing_animation.json";
 import Lottie from "lottie-react";
 const VendorSignUp = () => {
   //state
@@ -194,5 +194,6 @@ const VendorSignUp = () => {
     </div>
   );
 };
+
 
 export default VendorSignUp;
