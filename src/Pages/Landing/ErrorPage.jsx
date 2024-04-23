@@ -19,7 +19,7 @@ const ErrorPage = () => {
       <Lottie animationData={errorAnimation} className="h-fit lg:h-[70%]"></Lottie>
 
       <Link to={"/"}>
-            <Button width={"200"} text={"Go Back Home"} ></Button>
+            <Button width={"200"} color={"black"} text={"Go Back Home"} ></Button>
       </Link>
     </div>
   );
