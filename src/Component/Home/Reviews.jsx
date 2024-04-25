@@ -44,7 +44,7 @@ const Reviews = ({ review, user_name, user_image }) => {
                         {/* client review */}
                         <div className="">
                             <div
-                                className="card bg-base-100 shadow-xl w-fit absolute left-5 lg:left-20 rounded-lg bottom-28 z-50 ">
+                                className="card bg-base-100 shadow-xl w-[90%] absolute left-5 lg:left-20 rounded-lg bottom-28 z-50 ">
                                 <div className="card-body">
                                     <p className="space-y-4 text-[#777]">
                                         {review}

@@ -2,7 +2,7 @@
 
 const MediaCard = () => {
     return (
-        <div className="w-full mx-auto rounded-2xl bg-slate-100/70 px-6 py-4 shadow-md dark:bg-[#18181B]">
+        <div className="w-full mx-auto rounded-2xl bg-slate-100/70 px-6 py-4 shadow-md ">
             {/* Card Image */}
             <img className="h-[190px] w-full rounded-2xl bg-gray-400" src={'https://source.unsplash.com/350x190/?furniture'} alt="card navigate ui" />
             {/* Card Heading */}

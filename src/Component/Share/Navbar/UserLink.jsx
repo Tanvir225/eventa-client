@@ -36,7 +36,7 @@ const UserLink = () => {
 
       <li className="">
         <NavLink
-          to={"/contact"}
+          to={"/about"}
           className="hidden md:flex flex-col justify-center items-center "
         >
           <MdChatBubbleOutline 
