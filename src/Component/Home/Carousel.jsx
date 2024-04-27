@@ -8,19 +8,19 @@ const Carousel = () => {
   const [currentSlider, setCurrentSlider] = useState(0);
   const sliders = [
     {
-      img: "https://source.unsplash.com/1200x540/?nature",
+      img: "https://source.unsplash.com/1200x540/?convention hall",
       title: "Your Wedding , Your Way!",
     },
     {
-      img: "https://source.unsplash.com/1200x540/?hill",
+      img: "https://source.unsplash.com/1200x540/?wedding",
       title: "Book with Us Today!",
     },
     {
-      img: "https://source.unsplash.com/1200x540/?mountain",
+      img: "https://source.unsplash.com/1200x540/?photographer",
       title: "Reserve Your Wedding Date!",
     },
     {
-      img: "https://source.unsplash.com/1200x540/?river",
+      img: "https://source.unsplash.com/1200x540/?hall",
       title: "Reserve Wedding Venue!",
     },
   ];
@@ -56,7 +56,7 @@ const Carousel = () => {
   return (
     <section>
       <div
-        className="w-full h-fit sm:h-96 md:h-[550px] pb-5 flex flex-col items-center justify-center gap-5 lg:gap-10 bg-cover bg-center  before:absolute before:bg-neutral-900/60 before:inset-0 transform duration-1000 ease-linear"
+        className="w-full h-fit sm:h-96 md:h-[600px] object-cover pb-5 flex flex-col items-center justify-center gap-5 lg:gap-10 bg-cover bg-center  before:absolute before:bg-neutral-900/60 before:inset-0 transform duration-1000 ease-linear"
         style={{ backgroundImage: `url(${sliders[currentSlider].img})` }}
       >
         {/* text container here */}

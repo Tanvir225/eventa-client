@@ -1,30 +1,65 @@
+import emailjs from "@emailjs/browser";
+import { useRef } from "react";
+import toast from "react-hot-toast";
+
 const Contact_Form = () => {
+
+  //send email by email-js service
+  const form = useRef()
+
+  //email functionality
+  const sendEmail = (e)=>{
+    e.preventDefault();
+    const formValue = e.target;
+
+    emailjs.sendForm(
+      "service_9jmtiqi",
+      'template_tt951xo',
+      form.current,
+      '3tEzzEzGWAG3q0k3X'
+    )
+    .then(
+      (result) => {
+        console.log(result.text);
+        formValue.reset();
+        toast.success("message send successfully");
+      },
+      (error) => {
+        console.log(error.text);
+      }
+    );
+  }
+
   return (
     <div className=" my-12 p-5 bg-slate-50 rounded-lg shadow-md sm:px-8 sm:py-10 lg:px-10 lg:py-16">
       <div className="w-full flex flex-col items-center sm:flex-row justify-center space-x-0 sm:space-x-12">
         <div className="w-full sm:w-1/2 mb-8 sm:mb-0 ">
           {/* Left side form */}
           <h2 className="text-2xl font-bold mb-6">Say hello!</h2>
-          <form>
+          <form  ref={form} onSubmit={sendEmail}>
             <div className="flex flex-col space-y-4 mb-4 ">
               <input
                 className="flex h-12 w-full bg-white rounded-md border px-3 py-2 text-sm focus:outline-none"
                 placeholder="Name"
                 type="text"
+                name="from_name"
               />
               <input
                 className="flex h-12 w-full bg-white rounded-md border px-3 py-2 text-sm focus:outline-none"
                 placeholder="Email"
                 type="email"
+                name="from_email"
               />
               <input
                 className="flex h-12 w-full bg-white rounded-md border px-3 py-2 text-sm focus:outline-none"
                 placeholder="Contact Number"
+                name="from_contact"
                 type="tel"
               />
               <textarea
                 rows={6}
-                placeholder="Enter your message"
+                placeholder="Enter your message..."
+                name="message"
                 className="flex bg-white  w-full rounded-md border px-3 py-2 text-sm focus:outline-none"
                 type="tel"
               />

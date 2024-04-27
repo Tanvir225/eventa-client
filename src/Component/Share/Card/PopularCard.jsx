@@ -1,7 +1,9 @@
-import React from 'react';
+
+
 import { FaLocationArrow } from 'react-icons/fa';
 import { Link } from 'react-router-dom';
 
+// eslint-disable-next-line react/prop-types
 const PopularCard = ({name,price,location}) => {
     return (
         <div className='lg:px-7 space-y-3 w-full '>
