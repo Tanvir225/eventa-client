@@ -15,7 +15,7 @@ const UserLink = () => {
       </li>
       <li className="">
         <NavLink
-          to={"/contact"}
+          to={"/vendors"}
           className="flex flex-col justify-center items-center"
         >
           <MdOutlineConnectWithoutContact
@@ -48,7 +48,7 @@ const UserLink = () => {
 
       <li className="">
         <NavLink
-          to={"/contact"}
+          to={"/media"}
           className="flex flex-col justify-center items-center"
         >
           <LuGalleryThumbnails size={26}></LuGalleryThumbnails>

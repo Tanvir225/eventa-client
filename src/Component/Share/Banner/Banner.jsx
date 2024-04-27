@@ -1,10 +1,10 @@
-import React from 'react';
+
 import { Link } from 'react-router-dom';
 
 
 const Banner = () => {
     return (
-        <div className='bg-slate-100 w-full lg:h-[700px] rounded-lg shadow-lg p-10 space-y-5'>
+        <div className='bg-slate-100 w-full lg:h-[700px] rounded-lg shadow-lg p-10 space-y-5 my-5'>
             <div className='flex flex-col lg:flex-row justify-between items-center gap-14 '>
                 <div className='relative'>
                     <img src="https://source.unsplash.com/600x300/?hall" alt="banner_image" className='w-full lg:w-[500px]  h-[400px] lg:h-[550px] rounded-lg object-cover' />
@@ -22,5 +22,6 @@ const Banner = () => {
         </div>
     );
 };
+
 
 export default Banner;
