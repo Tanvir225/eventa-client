@@ -14,4 +14,5 @@ const Banner_1 = ({heading,text}) => {
 };
 
 
+
 export default Banner_1;

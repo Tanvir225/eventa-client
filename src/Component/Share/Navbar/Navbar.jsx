@@ -33,7 +33,7 @@ const Navbar = () => {
         className={
           navbarFixed
             ? "navbar space-y-2 pb-2 px-7 bg-slate-50 border-b-2 border-sky-500 shadow-xl fixedd"
-            : "navbar px-7 bg-neutral-900 space-y-3 pb-2 bg-opacity-30 delay-300"
+            : "navbar px-7 bg-neutral-900  bg-opacity-30 delay-300"
         }
       >
         {/* <Marqueee></Marqueee> */}

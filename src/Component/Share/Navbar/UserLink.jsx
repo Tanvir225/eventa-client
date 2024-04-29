@@ -26,11 +26,11 @@ const UserLink = () => {
       </li>
       <li className="">
         <NavLink
-          to={"/book"}
+          to={"/venue"}
           className="flex flex-col justify-center items-center"
         >
           <BiCategory size={26}></BiCategory>
-          <p>Venus </p>
+          <p>Venue </p>
         </NavLink>
       </li>
 

@@ -68,7 +68,7 @@ const Home = () => {
                 </section>
 
                 {/* latest media section */}
-                <section>
+                <section className="mb-10">
                     <Heading text={"Lates media"} seeAll={"view All(250)"}></Heading>
                     <div className="flex  flex-col lg:flex-row  justify-center items-center gap-10">
                         <MediaCard></MediaCard>
@@ -76,7 +76,7 @@ const Home = () => {
                         <MediaCard></MediaCard>
                         <MediaCard></MediaCard>
                     </div>
-                    <Pagination></Pagination>
+                   
                 </section>
             </div>
         </div>

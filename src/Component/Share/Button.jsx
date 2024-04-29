@@ -15,4 +15,5 @@ const Button = ({ width, text,color }) => {
   );
 };
 
+
 export default Button;

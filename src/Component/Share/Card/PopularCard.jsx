@@ -6,7 +6,7 @@ import { Link } from 'react-router-dom';
 // eslint-disable-next-line react/prop-types
 const PopularCard = ({name,price,location}) => {
     return (
-        <div className='lg:px-7 space-y-3 w-full '>
+        <div className='lg:px-7 space-y-3 w-full text-gray-600'>
             <img src="https://source.unsplash.com/400x200/?hall" className='w-full  h-[200px] rounded-lg object-cover' alt="pupularvenue" />
             <h3 className="text-xl font-semibold">{name}</h3>
             <div className='flex items-center justify-between'>

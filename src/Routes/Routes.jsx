@@ -7,6 +7,9 @@ import VendorSignUp from "../Pages/Landing/VendorSignUp";
 import ErrorPage from "../Pages/Landing/ErrorPage";
 import About from "../Pages/About/About";
 import Contact from "../Pages/Contact/Contact";
+import Media from "../Pages/Media/Media";
+import Vendors from "../Pages/Vendors/Vendors";
+import Venue from "../Pages/Venue/Venue";
 
 
 const router = createBrowserRouter([
@@ -26,6 +29,18 @@ const router = createBrowserRouter([
       {
         path: "/contact",
         element: <Contact></Contact>,
+      },
+      {
+        path: "/media",
+        element: <Media></Media>,
+      },
+      {
+        path: "/vendors",
+        element: <Vendors></Vendors>,
+      },
+      {
+        path: "/venue",
+        element: <Venue></Venue>,
       },
     ],
   },

@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import  { useState } from 'react';
 
 const Pagination = () => {
 
@@ -15,7 +15,7 @@ const Pagination = () => {
                 <svg className='w-8' viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><g id="SVGRepo_bgCarrier" strokeWidth={0} /><g id="SVGRepo_tracerCarrier" strokeLinecap="round" strokeLinejoin="round" /><g id="SVGRepo_iconCarrier"> <path d="M15 7L10 12L15 17" stroke="#0284C7" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" /> </g></svg>
             </div>
             <div className='flex justify-center items-center gap-2 bg-white p-2 shadow-lg rounded-full'>
-                {[...Array(page).keys()].map((item, ind) => <div onClick={() => { setPageNumber(item) }} className={`cursor-pointer hover:scale-110 text-sm scale-100 transition-all duration-200 px-3 ${pageNumber === item ? 'bg-sky-500 text-white' : 'bg-white'} border-sky-300  font-semibold text-gray-700   py-[6px] rounded-full`} key={item}>
+                {[...Array(page).keys()].map((item) => <div onClick={() => { setPageNumber(item) }} className={`cursor-pointer hover:scale-110 text-sm scale-100 transition-all duration-200 px-3 ${pageNumber === item ? 'bg-sky-500 text-white' : 'bg-white'} border-sky-300  font-semibold text-gray-700   py-[6px] rounded-full`} key={item}>
                     {item + 1}
                 </div>)}
             </div>
