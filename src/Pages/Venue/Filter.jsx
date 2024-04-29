@@ -1,7 +1,7 @@
 // eslint-disable-next-line react/prop-types
-const Filter = ({heading}) => {
+const Filter = ({heading, display}) => {
   return (
-    <div className="hiden lg:block my-16">
+    <div className={`${display ? 'block' : 'hidden'} lg:block my-16`}>
       <select className="select select-info w-full ">
         <option disabled selected>
           {heading}
