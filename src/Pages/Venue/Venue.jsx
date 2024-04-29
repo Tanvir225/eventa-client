@@ -30,7 +30,7 @@ const Venue = () => {
       </div>
 
       {/* filter in mobile device */}
-      <div className="flex justify-end px-7 my-7">
+      <div className="flex justify-end px-5 my-7 py-2 sticky top-24 z-20 bg-base-100">
         <button
           className="btn  btn-outline  flex items-center gap-2 justify-center lg:hidden "
           onClick={toggleDrawer}
