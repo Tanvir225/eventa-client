@@ -7,7 +7,7 @@ const Card = () => {
       {/* profile image & bg  */}
       <div className="relative">
         <img
-          className="w-full h-[30vh] rounded-2xl bg-gray-500 group-hover:scale-110 duration-200"
+          className="w-full h-[30vh] rounded-2xl bg-gray-500 group-hover:scale-110 duration-300 delay-200"
           src="https://img.freepik.com/free-psd/3d-rendering-royal-room-illustration_23-2150185815.jpg?t=st=1709815614~exp=1709819214~hmac=1510c1c37623a23b434bea0351199a3a51aec9ed3b3ac104673fb2e380b8a973&w=740"
           alt="card navigate ui"
         />

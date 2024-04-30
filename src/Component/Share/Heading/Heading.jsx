@@ -4,10 +4,10 @@ import label from "../../../assets/label-3.png"
 const Heading = ({ text, seeAll, subHeading }) => {
   return (
     <div className="flex items-center justify-between flex-wrap my-10 space-y-5">
-      <h2 className="font-bold text-xl lg:text-2xl text-neutral-600 border-b-4 border-sky-300  py-5 border-dashed">{text}</h2>
+      <h2 className="font-bold text-base lg:text-2xl text-neutral-600 border-b-4 border-sky-300  py-5 border-dashed">{text}</h2>
       <div>
         {
-          subHeading ? <p className="text-[#66042D] font-semibold text-lg">{subHeading}</p> : ""
+          subHeading ? <p className="text-[#66042D] font-semibold text-base md:text-lg">{subHeading}</p> : ""
         }
 
         {

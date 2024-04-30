@@ -3,7 +3,7 @@ import Banner_1 from "../../Component/Share/Banner_1/Banner_1";
 import PopularCard from "../../Component/Share/Card/PopularCard";
 import Categories from "../../Component/Share/Categories/Categories";
 import Heading from "../../Component/Share/Heading/Heading";
-import Pagination from "../../Component/Share/Pagination/Pagination";
+
 
 const Vendors = () => {
   return (
@@ -27,37 +27,33 @@ const Vendors = () => {
         {/* popular photographer */}
         <div>
           <Heading text="Popular Photographer" seeAll="View All(85)"></Heading>
-          <section className="flex items-center justify-center flex-col lg:flex-row gap-6">
+          <section className="grid grid-cols-2 gap-7 justify-center w-full">
             <PopularCard name="Picture Perfect" price="5000"></PopularCard>
             <PopularCard name="Picture Perfect" price="5000"></PopularCard>
             <PopularCard name="Picture Perfect" price="5000"></PopularCard>
             <PopularCard name="Picture Perfect" price="5000"></PopularCard>
           </section>
-          <Pagination></Pagination>
+         
         </div>
 
         {/* Trending parlour */}
         <div>
             <Heading text="Trending Parlour" seeAll="View All(25)"></Heading>
-            <section className="flex items-center justify-center flex-col lg:flex-row gap-6">
-                <PopularCard name="Tereja Beauty Parlour" price="2000"></PopularCard>
-                <PopularCard name="Tereja Beauty Parlour" price="2000"></PopularCard>
+            <section className="grid grid-cols-2 gap-7 justify-center w-full-6">
                 <PopularCard name="Tereja Beauty Parlour" price="2000"></PopularCard>
                 <PopularCard name="Tereja Beauty Parlour" price="2000"></PopularCard>
             </section>
-            <Pagination></Pagination>
+           
         </div>
         {/* Featured decorator */}
         <div>
             <Heading text="Featured Decorators" seeAll="View All(20)"></Heading>
-            <section className="flex items-center justify-center flex-col lg:flex-row gap-6">
+            <section className="grid grid-cols-2 gap-7 justify-center w-full">
                 <PopularCard name="Khan Decoration" price="8000"></PopularCard>
                 <PopularCard name="Khan Decoration" price="8000"></PopularCard>
-                <PopularCard name="Khan Decoration" price="8000"></PopularCard>
-                <PopularCard name="Khan Decoration" price="8000"></PopularCard>
-              
+      
             </section>
-            <Pagination></Pagination>
+           
         </div>
 
         <Banner></Banner>

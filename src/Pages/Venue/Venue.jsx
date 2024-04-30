@@ -68,7 +68,10 @@ const Venue = () => {
 
 
       {/* All venue */}
-      <section className="px-5 grid grid-cols-1 lg:grid-cols-3 gap-5 xl:grid-cols-4">
+      <section className="px-5 grid grid-cols-1 lg:grid-cols-3
+      
+      
+      gap-5 ">
         <Card></Card>
         <Card></Card>
         <Card></Card>
