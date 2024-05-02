@@ -3,16 +3,10 @@ import Carousel from "../../Component/Home/Carousel";
 import Reviews from "../../Component/Home/Reviews";
 import Banner from "../../Component/Share/Banner/Banner";
 import MediaCard from "../../Component/Share/Card/MediaCard";
-import PopularCard from "../../Component/Share/Card/PopularCard";
 import Categories from "../../Component/Share/Categories/Categories";
 import Heading from "../../Component/Share/Heading/Heading";
 import Navbar from "../../Component/Share/Navbar/Navbar";
-import { Pagination } from "swiper/modules";
-import { Swiper, SwiperSlide } from "swiper/react";
-// Import Swiper styles
-import "swiper/css";
-import 'swiper/css/pagination';
-
+import PopularSwiper from "../../Component/PopularSwiper/PopularSwiper";
 
 const Home = () => {
   //testing swiperslide state
@@ -24,8 +18,6 @@ const Home = () => {
       .then((res) => res.json())
       .then((data) => setCard(data));
   }, []);
-
-
 
   return (
     <div className="">
@@ -48,24 +40,7 @@ const Home = () => {
         {/* popular venue section */}
         <section>
           <Heading text={"Popular Venue"} seeAll={"View All (100)"}></Heading>
-
-          {/* swperSlide */}
-          <Swiper
-          modules={[Pagination]}
-            spaceBetween={50}
-            slidesPerView={2}
-            pagination={{clickable:true}} 
-
-          >
-            {card.slice(0,20)?.map((card, index) => (
-              <SwiperSlide key={index} className="pb-5 lg:pb-10">
-                <PopularCard image={card.image} name={card.name} price={card.price}>
-                </PopularCard>
-              </SwiperSlide>
-              
-            ))}
-          </Swiper>
-          
+          <PopularSwiper cards={card}></PopularSwiper>
         </section>
 
         {/* shared banner section */}
@@ -79,21 +54,7 @@ const Home = () => {
             text={"Featured Venue"}
             subHeading={"Lower price user Choice"}
           ></Heading>
-         <Swiper
-          modules={[Pagination]}
-            spaceBetween={50}
-            slidesPerView={2}
-            pagination={{clickable:true}} 
-           
-          >
-            {card.slice(0,20)?.map((card, index) => (
-              <SwiperSlide key={index} className="pb-5 lg:pb-10">
-                <PopularCard image={card.image} name={card.name} price={card.price}>
-                </PopularCard>
-              </SwiperSlide>
-              
-            ))}
-          </Swiper>
+          <PopularSwiper cards={card}></PopularSwiper>
         </section>
 
         {/* reviews section */}

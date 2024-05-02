@@ -40,7 +40,7 @@ const Card = () => {
           <h5 className="font-medium text-xl">1 day ago</h5>
           <p className="text-sm  text-[#FF1493]">Last Booking</p>
         </div>
-        <button className="hover:bg-sky-500 hover:scale-95 font-medium hover:text-white w-full py-2 rounded-full hover:shadow-xl   text-gray-600 shadow-[0px_0px_10px_#E2DADA] t duration-500">
+        <button className="bg-gradient-to-r from-[#9fccfa] to-[#0974f1] hover:scale-95 font-medium  w-full py-2 rounded-full hover:shadow-xl   text-white shadow-[0px_0px_10px_#E2DADA] t duration-500">
           View Profile
         </button>
       </div>

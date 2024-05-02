@@ -12,7 +12,7 @@ const MediaCard = () => {
             </div>
             {/* Price and action button */}
             <div className="mt-5 flex items-center justify-between">
-                <button className="rounded-lg bg-slate-800 px-6 py-2 text-[12px] font-semibold text-white hover:bg-slate-900 sm:text-sm md:text-base">Read more</button>
+                <button className="rounded-lg bg-gradient-to-r from-[#9fccfa] to-[#0974f1] px-6 py-2 text-[12px] font-semibold text-white hover:bg-slate-900 sm:text-sm md:text-base">Read more</button>
             </div>
         </div>
     );

@@ -1,6 +1,5 @@
 /* eslint-disable react/prop-types */
 import { Link } from "react-router-dom";
-import label from "../../../assets/label-3.png"
 const Heading = ({ text, seeAll, subHeading }) => {
   return (
     <div className="flex items-center justify-between flex-wrap my-10 space-y-5">
@@ -11,7 +10,7 @@ const Heading = ({ text, seeAll, subHeading }) => {
         }
 
         {
-          seeAll ? <Link to={"/"} className="text-center font-semibold text-white px-4 py-1 rounded-lg hover:bg-black bg-sky-500">{seeAll}</Link> : ""
+          seeAll ? <Link to={"/"} className="text-center font-semibold text-white px-4 py-1 rounded-lg hover:bg-black bg-gradient-to-r from-[#9fccfa] to-[#0974f1]">{seeAll}</Link> : ""
         }
       </div>
     </div>
