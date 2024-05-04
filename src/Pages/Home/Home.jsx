@@ -70,6 +70,15 @@ const Home = () => {
           ></Reviews>
         </section>
 
+         {/* Featured car section*/}
+         <section>
+          <Heading
+            text={"Featured Car"}
+            subHeading={"Lower price user Choice"}
+          ></Heading>
+          <PopularSwiper cards={card}></PopularSwiper>
+        </section>
+
         {/* latest media section */}
         <section className="mb-10">
           <Heading text={"Lates media"} seeAll={"view All(250)"}></Heading>

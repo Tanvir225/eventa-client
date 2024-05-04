@@ -4,6 +4,7 @@ import { useForm } from "react-hook-form";
 import { FaArrowLeft, FaEye, FaEyeSlash } from "react-icons/fa";
 import { Link } from "react-router-dom";
 import animation from "../../assets/landing_animation.json";
+import useUploadImage from "../../Hook/useUploadImage";
 const UserSignUp = () => {
   //state
   const [showPassword, setIsShowPassword] = useState(false);
@@ -20,7 +21,12 @@ const UserSignUp = () => {
     formState: { errors }, //TODO SET ERROR IN A STATE
   } = useForm();
 
-  const onSubmit = (data) => console.log(data, errors);
+  const onSubmit = async(data) => {
+    console.log(data.profile[0]);
+    const profileImage = {profile : data.profile[0]}
+    const {result} = useUploadImage({imageFile:profileImage})
+    console.log(result);
+  };
 
   return (
     <div className="flex flex-col h-screen items-center justify-center space-y-5 bg-base-100 p-5 md:p-5">
