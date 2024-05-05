@@ -4,10 +4,19 @@ import { useForm } from "react-hook-form";
 import { FaArrowLeft, FaEye, FaEyeSlash } from "react-icons/fa";
 import { Link } from "react-router-dom";
 import animation from "../../assets/landing_animation.json";
-import useUploadImage from "../../Hook/useUploadImage";
+import ImageUpload from "../../Utils/ImageUpload";
+import toast from "react-hot-toast";
+import useAuth from "../../Hook/useAuth";
+import { updateProfile } from "firebase/auth";
+import { ClipLoader } from "react-spinners";
+
 const UserSignUp = () => {
   //state
   const [showPassword, setIsShowPassword] = useState(false);
+
+
+  //useAuth hook calling
+  const { signUp, loading } = useAuth();
 
   //password  visibility toggle
   const handlePasswordShow = () => {
@@ -19,13 +28,44 @@ const UserSignUp = () => {
     register,
     handleSubmit,
     formState: { errors }, //TODO SET ERROR IN A STATE
+    reset,
   } = useForm();
 
-  const onSubmit = async(data) => {
-    console.log(data.profile[0]);
-    const profileImage = {profile : data.profile[0]}
-    const {result} = useUploadImage({imageFile:profileImage})
-    console.log(result);
+  const onSubmit = async (data) => {
+    const name = data?.name;
+    const email = data?.email;
+    const password = data?.password;
+
+    //password checker
+    if (data?.password?.length < 6) {
+      toast.error("Password at least 6 characters");
+      return;
+    }
+
+    //image upload
+    const imageFile = { image: data.image[0] };
+    
+    try{
+      const imgHosting = await ImageUpload({imageFile:imageFile})
+      console.log(imgHosting.result.data);
+
+
+      //user signUp
+      const signUpUser = await signUp(email,password)
+      const user = signUpUser.user
+      
+      //update Profile 
+      await updateProfile(user,{
+        displayName:name,
+        photoURL:imgHosting?.result?.data?.data?.display_url
+      })
+
+      toast.success("Account has been created")
+      reset()
+    }catch(error){
+      console.log(error);
+    }
+
   };
 
   return (
@@ -39,7 +79,7 @@ const UserSignUp = () => {
       <div className="flex h-full w-full overflow-hidden rounded-xl shadow-md  md:h-[100%] md:w-[80%] lg:h-[100%]">
         {/* register design side  */}
         <div className="relative hidden h-full items-center justify-center bg-sky-400 md:flex md:w-[60%] lg:w-[40%]">
-        <div className="absolute -top-2 left-[20%] h-16 w-16 rounded-full bg-gradient-to-br  from-white via-[#60b5fa] to-[#6585dd]"></div>
+          <div className="absolute -top-2 left-[20%] h-16 w-16 rounded-full bg-gradient-to-br  from-white via-[#60b5fa] to-[#6585dd]"></div>
           <div className="absolute bottom-[18%] left-[20%] h-20 w-20 rounded-full bg-gradient-to-br  from-white via-[#60b5fa] to-[#6585dd]"></div>
           <div className="absolute -right-7 top-[50%] h-14 w-14 -translate-y-1/2 rounded-full bg-gradient-to-br from-white via-[#60b5fa] to-[#6585dd] transition-all"></div>
           <div className="absolute left-[50%] top-[22%] h-24 w-24 -translate-x-1/2 rounded-full  bg-gradient-to-br from-white via-[#60b5fa] to-[#6585dd]"></div>
@@ -107,8 +147,8 @@ const UserSignUp = () => {
               className="w-[80%] rounded-lg text-gray-400 border border-[#FF69B4] px-6 py-2 focus:outline-none focus:ring-2 focus:ring-[#8EA7E9]/50 md:w-[60%]"
               type="file"
               placeholder="profile"
-              name="profile"
-              {...register("profile")}
+              name="image"
+              {...register("image")}
               required
             />
 
@@ -125,7 +165,9 @@ const UserSignUp = () => {
               className="w-[80%] rounded-lg bg-[#FF69B4] hover:bg-sky-600 px-6 py-2 font-medium text-white md:w-[60%]"
               type="submit"
             >
-              Signup
+              {
+                loading ? <ClipLoader color="white"></ClipLoader> : 'Signup'
+              }
             </button>
           </form>
         </div>
