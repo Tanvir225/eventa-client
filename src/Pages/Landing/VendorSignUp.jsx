@@ -1,14 +1,23 @@
 import { useState } from "react";
 import { useForm } from "react-hook-form";
 import { FaArrowLeft, FaEye, FaEyeSlash } from "react-icons/fa";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import animation from "../../assets/landing_animation.json";
 import Lottie from "lottie-react";
+import useAuth from "../../Hook/useAuth";
+import ImageUpload from "../../Utils/ImageUpload";
+import { updateProfile } from "firebase/auth";
+import toast from "react-hot-toast";
+import { ClockLoader } from "react-spinners";
 const VendorSignUp = () => {
   //state
   const [showPassword, setIsShowPassword] = useState(false);
   const [isOpen, setIsOpen] = useState(false);
   const [selectedValue, setSelectedValue] = useState("Select vendor type");
+  const [Loading, setLoading] = useState(false);
+
+  //useAuth hook call
+  const { signUp, loading } = useAuth();
 
   // array of options  for select dropdown
   const options = ["Convention Hall", "Car", "Flower", "Photographer"];
@@ -18,15 +27,49 @@ const VendorSignUp = () => {
     setIsShowPassword(!showPassword);
   };
 
-  //user-sign-up functionality
-  const {
-    register,
-    handleSubmit,
-  } = useForm();
+  //navigate
+  const navigate = useNavigate();
 
-  const onSubmit = (data) => {
-    data.vendor = selectedValue;
-    console.log(data);
+  //user-sign-up functionality
+  const { register, handleSubmit, reset } = useForm();
+
+  const onSubmit = async (data) => {
+    const name = data?.name;
+    const email = data?.email;
+    const password = data?.password;
+
+    //password checker
+    if (data?.password?.length < 6) {
+      toast.error("Password at least 6 characters");
+      return;
+    }
+
+    //image Upload
+    const imageFile = { image: data?.image[0] };
+
+    try {
+      setLoading(true);
+      const imgHosting = await ImageUpload({ imageFile: imageFile });
+      console.log(imgHosting.result?.data);
+      setLoading(false);
+
+      //user signup
+      const signVendor = await signUp(email, password);
+      const vendor = signVendor.user;
+      console.log(vendor);
+
+      //update profile
+      await updateProfile(vendor, {
+        displayName: name,
+        photoURL: imgHosting?.result?.data?.data?.display_url,
+      });
+
+      toast.success("Account has been created");
+      reset();
+      navigate("/");
+    } catch (error) {
+      console.log("Error in Image upload", error);
+    }
   };
 
   return (
@@ -40,7 +83,7 @@ const VendorSignUp = () => {
       <div className="flex h-full w-full overflow-hidden rounded-xl shadow-md  md:h-[100%] md:w-[80%] lg:h-[100%]">
         {/* register design side  */}
         <div className="relative hidden h-full items-center justify-center bg-sky-400 md:flex md:w-[60%] lg:w-[40%]">
-        <div className="absolute bottom-[18%] left-[20%] h-20 w-20 rounded-full bg-gradient-to-br  from-white via-[#60b5fa] to-[#6585dd]"></div>
+          <div className="absolute bottom-[18%] left-[20%] h-20 w-20 rounded-full bg-gradient-to-br  from-white via-[#60b5fa] to-[#6585dd]"></div>
           <div className="absolute -right-7 top-[50%] h-14 w-14 -translate-y-1/2 rounded-full bg-gradient-to-br from-white via-[#60b5fa] to-[#6585dd] transition-all"></div>
           <div className="absolute  left-[20%] top-6 h-14 w-14 -translate-y-1/2 rounded-full bg-gradient-to-br from-white via-[#60b5fa] to-[#6585dd] transition-all"></div>
           <div className="absolute left-[50%] top-[22%] h-24 w-24 -translate-x-1/2 rounded-full  bg-gradient-to-br from-white via-[#60b5fa] to-[#6585dd]"></div>
@@ -71,7 +114,7 @@ const VendorSignUp = () => {
               {...register("name")}
               required
             />
-            
+
             <input
               className="w-[80%] rounded-lg border border-[#FF69B4] px-6 py-2 focus:outline-none focus:ring-2 focus:ring-[#8EA7E9]/50 md:w-[60%]"
               type="tel"
@@ -169,9 +212,9 @@ const VendorSignUp = () => {
             <input
               className="w-[80%] text-gray-400 rounded-lg border border-[#FF69B4] px-6 py-2 focus:outline-none focus:ring-2 focus:ring-[#8EA7E9]/50 md:w-[60%]"
               type="file"
-              placeholder="profile"
-              name="profile"
-              {...register("profile")}
+              placeholder="image"
+              name="image"
+              {...register("image")}
               required
             />
             <p className="text-[14px] text-gray-400">
@@ -184,10 +227,14 @@ const VendorSignUp = () => {
               </Link>
             </p>
             <button
-              className="w-[80%] rounded-lg bg-[#FF69B4] hover:bg-sky-600 px-6 py-2 font-medium text-white md:w-[60%]"
+              className="w-[80%] flex justify-center items-center rounded-lg bg-[#FF69B4] hover:bg-sky-600 px-6 py-2 font-medium text-white md:w-[60%]"
               type="submit"
             >
-              Signup
+              {loading || Loading ? (
+                <ClockLoader size={30} color="white"></ClockLoader>
+              ) : (
+                "Signup"
+              )}
             </button>
           </form>
         </div>
@@ -195,6 +242,5 @@ const VendorSignUp = () => {
     </div>
   );
 };
-
 
 export default VendorSignUp;

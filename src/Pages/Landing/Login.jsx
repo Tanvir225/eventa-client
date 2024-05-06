@@ -14,7 +14,7 @@ const Login = () => {
   const [showPassword, setIsShowPassword] = useState(false);
 
   //useAuth hook calling
-  const { login, loading } = useAuth();
+  const { login, loading,googleLogin } = useAuth();
 
   //navigate
   const navigate = useNavigate()
@@ -23,6 +23,16 @@ const Login = () => {
   const handlePasswordShow = () => {
     setIsShowPassword(!showPassword);
   };
+
+  //google Login functionality
+  const handleGoogleLogin = ()=>{
+    googleLogin()
+    .then((res) => {
+      console.log(res);
+      toast.success("Successfully Login")
+      navigate("/");
+    })
+  }
 
   //login functionality
   const {
@@ -120,7 +130,7 @@ const Login = () => {
                 ></FaEye>
               )}
               <p className="text-left w-[80%] md:w-[60%] mx-auto my-1">
-                <Link>Forget password?</Link>
+                <Link to={"/reset-password"}>Forget password?</Link>
               </p>
             </div>
             <p className="text-[14px] text-gray-400">
@@ -148,7 +158,7 @@ const Login = () => {
             <hr className="flex-1" />
           </div>
           {/* sign with google */}
-          <div className="mx-auto flex h-[50px]  w-[200px] items-center overflow-hidden rounded-full shadow-md duration-300 hover:scale-95 hover:shadow">
+          <div onClick={handleGoogleLogin} className="mx-auto flex h-[50px]  w-[200px] items-center overflow-hidden rounded-full shadow-md duration-300 hover:scale-95 hover:shadow">
             <div className="flex h-full w-[50%] items-center bg-[#FF69B4]  pl-4 text-sm text-white">
               Sign With
             </div>

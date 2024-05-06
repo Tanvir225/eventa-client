@@ -92,7 +92,7 @@ const Navbar = () => {
                       <Link to={"/"}>Dashboard</Link>
                     </li>
                     <li>
-                      <Link to={"/"}>Setting</Link>
+                      <Link to={"/"}>Settings</Link>
                     </li>
                     <li>
                       <button onClick={logOutUser}>Logout</button>
@@ -121,7 +121,7 @@ const Navbar = () => {
               </div>
               <ul
                 tabIndex={0}
-                className="mt-1 z-[1] p-3 font-semibold shadow menu menu-sm dropdown-content bg-base-100 rounded-box w-44 text-neutral-800"
+                className="mt-1 z-[1] p-2 font-semibold shadow menu menu-sm dropdown-content bg-base-100 rounded-box w-44 text-neutral-800"
               >
                 <li className="border-b-2 ">
                   <a className="justify-between text-sky-400">
@@ -132,7 +132,7 @@ const Navbar = () => {
                   <Link to={"/"}>Dashboard</Link>
                 </li>
                 <li>
-                  <Link to={"/"}>Setting</Link>
+                  <Link to={"/"}>Settings</Link>
                 </li>
                 <li>
                   <button onClick={logOutUser}>Logout</button>

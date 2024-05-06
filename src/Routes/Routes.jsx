@@ -10,6 +10,7 @@ import Contact from "../Pages/Contact/Contact";
 import Media from "../Pages/Media/Media";
 import Vendors from "../Pages/Vendors/Vendors";
 import Venue from "../Pages/Venue/Venue";
+import ResetPass from "../Pages/Landing/ResetPass";
 
 
 const router = createBrowserRouter([
@@ -41,6 +42,10 @@ const router = createBrowserRouter([
       {
         path: "/venue",
         element: <Venue></Venue>,
+      },
+      {
+        path: "/reset-password",
+        element: <ResetPass></ResetPass>,
       },
     ],
   },

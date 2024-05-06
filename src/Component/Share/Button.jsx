@@ -1,7 +1,7 @@
 // eslint-disable-next-line react/prop-types
 const Button = ({ width, text,color }) => {
   let widthInt = Number(width);
-  console.log(widthInt);
+  //console.log(widthInt);
   return (
     <div>
       <button

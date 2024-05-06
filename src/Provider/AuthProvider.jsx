@@ -1,5 +1,5 @@
 /* eslint-disable react/prop-types */
-import { GoogleAuthProvider, createUserWithEmailAndPassword, onAuthStateChanged, signInWithEmailAndPassword, signInWithPopup } from "firebase/auth";
+import { GoogleAuthProvider, createUserWithEmailAndPassword, onAuthStateChanged, sendPasswordResetEmail, signInWithEmailAndPassword, signInWithPopup } from "firebase/auth";
 import { createContext, useEffect, useState } from "react";
 import auth from "../Firebase/firebase.config";
 
@@ -23,6 +23,12 @@ const AuthProvider = ({children}) => {
     const login = (email, password) =>{
         setLoading(true)
         return signInWithEmailAndPassword(auth, email, password)
+    }
+
+    //password reset email
+    const passwordReset = (email)=>{
+        setLoading(true)
+        return sendPasswordResetEmail(auth,email)
     }
 
     //logout user
@@ -53,6 +59,7 @@ const AuthProvider = ({children}) => {
         loading,
         signUp,
         login,
+        passwordReset,
         logOut,
         googleLogin
     }
