@@ -1,28 +1,58 @@
 import { useState } from "react";
 import { useForm } from "react-hook-form";
 import { FaArrowLeft, FaGoogle, FaEye, FaEyeSlash } from "react-icons/fa";
-import { Link } from "react-router-dom";
-import animation from "../../assets/landing_animation.json"
+import { Link, useNavigate } from "react-router-dom";
+import animation from "../../assets/landing_animation.json";
 import Lottie from "lottie-react";
 import { RiAlertLine } from "react-icons/ri";
+import useAuth from "../../Hook/useAuth";
+import toast from "react-hot-toast";
+import { ClockLoader } from "react-spinners";
 
 const Login = () => {
   //state
   const [showPassword, setIsShowPassword] = useState(false);
 
+  //useAuth hook calling
+  const { login, loading } = useAuth();
+
+  //navigate
+  const navigate = useNavigate()
+
   //password  visibility toggle
   const handlePasswordShow = () => {
-      setIsShowPassword(!showPassword)
+    setIsShowPassword(!showPassword);
   };
 
   //login functionality
   const {
     register,
     handleSubmit,
+    reset,
     formState: { errors }, //TODO SET ERROR IN A STATE
   } = useForm();
 
-  const onSubmit = (data) => console.log(data, errors);
+  const onSubmit = (data) => {
+    const email = data?.email;
+    const password = data?.password;
+
+    //login functionality
+    login(email, password)
+      // eslint-disable-next-line no-unused-vars
+      .then((res) => {
+        toast.success("Successfully Login");
+        reset()
+        navigate("/")
+      })
+      .catch((err) => {
+        console.log(err.message);
+        if (String(err).includes("FirebaseError")) {
+          return toast.error("Invalid Email or Password");
+        } else {
+          return toast.error("Something went wrong!");
+        }
+      });
+  };
 
   return (
     <div className="flex flex-col h-screen items-center justify-center space-y-5 bg-base-100 p-5 md:p-0">
@@ -54,9 +84,12 @@ const Login = () => {
           <h2 className="text-center text-3xl font-bold text-[#FF69B4] mb-3">
             Login Here
           </h2>
-          {
-            errors.email || errors.password ? <p className="text-red-500 font-semibold justify-center gap-2 flex items-center py-3"><RiAlertLine ></RiAlertLine>{errors?.email?.message || errors?.password?.message}</p> : null
-          }
+          {errors.email || errors.password ? (
+            <p className="text-red-500 font-semibold justify-center gap-2 flex items-center py-3">
+              <RiAlertLine></RiAlertLine>
+              {errors?.email?.message || errors?.password?.message}
+            </p>
+          ) : null}
           <form
             onSubmit={handleSubmit(onSubmit)}
             className="flex  w-full flex-col items-center justify-center gap-4"
@@ -65,8 +98,7 @@ const Login = () => {
               className="w-[80%] rounded-lg border border-[#FF69B4] px-6 py-2 focus:outline-none focus:ring-2 focus:ring-[#8EA7E9]/50 md:w-[60%]"
               type="email"
               placeholder="Email"
-              {...register("email", {required:"Email is required"})}
-              
+              {...register("email", { required: "Email is required" })}
             />
             <div className="w-full text-center relative">
               <input
@@ -74,15 +106,22 @@ const Login = () => {
                 type={`${showPassword ? "text" : "password"}`}
                 placeholder="Password"
                 name="password"
-                {...register("password",{required:"Password is required"})}
-                
+                {...register("password", { required: "Password is required" })}
               />
               {showPassword ? (
-                <FaEyeSlash onClick={handlePasswordShow} className="absolute top-[20%] right-[15%] md:right-[22%]"></FaEyeSlash>
+                <FaEyeSlash
+                  onClick={handlePasswordShow}
+                  className="absolute top-[20%] right-[15%] md:right-[22%]"
+                ></FaEyeSlash>
               ) : (
-                <FaEye onClick={handlePasswordShow} className="absolute top-[20%] right-[15%] md:right-[22%]"></FaEye>
+                <FaEye
+                  onClick={handlePasswordShow}
+                  className="absolute top-[20%] right-[15%] md:right-[22%]"
+                ></FaEye>
               )}
-              <p className="text-left w-[80%] md:w-[60%] mx-auto my-1"><Link>Forget password?</Link></p>
+              <p className="text-left w-[80%] md:w-[60%] mx-auto my-1">
+                <Link>Forget password?</Link>
+              </p>
             </div>
             <p className="text-[14px] text-gray-400">
               Do not have an account ?{" "}
@@ -94,10 +133,12 @@ const Login = () => {
               </Link>
             </p>
             <button
-              className="w-[80%] rounded-lg bg-[#FF69B4] hover:bg-sky-600 px-6 py-1 font-medium text-white md:w-[60%]"
+              className="w-[80%] flex items-center justify-center rounded-lg bg-[#FF69B4] hover:bg-sky-600 px-6 py-1 font-medium text-white md:w-[60%]"
               type="submit"
             >
-              Login
+             {
+              loading ? <ClockLoader color="white" size={30}></ClockLoader> : " Login"
+             }
             </button>
           </form>
           {/* divider  */}

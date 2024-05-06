@@ -37,6 +37,13 @@ const Home = () => {
           <Categories text={"categories-6"}></Categories>
         </section>
 
+        {/* Hot deals section */}
+        <section>
+          <Heading text={"Hot Deals"} seeAll={"View All (100)"}></Heading>
+          <PopularSwiper cards={card}></PopularSwiper>
+        </section>
+
+        
         {/* popular venue section */}
         <section>
           <Heading text={"Popular Venue"} seeAll={"View All (100)"}></Heading>

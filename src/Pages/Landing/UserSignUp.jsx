@@ -1,18 +1,22 @@
+/* eslint-disable no-unused-vars */
 import Lottie from "lottie-react";
 import { useState } from "react";
 import { useForm } from "react-hook-form";
 import { FaArrowLeft, FaEye, FaEyeSlash } from "react-icons/fa";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import animation from "../../assets/landing_animation.json";
 import ImageUpload from "../../Utils/ImageUpload";
 import toast from "react-hot-toast";
 import useAuth from "../../Hook/useAuth";
 import { updateProfile } from "firebase/auth";
-import { ClipLoader } from "react-spinners";
+import { ClockLoader } from "react-spinners";
+
 
 const UserSignUp = () => {
   //state
   const [showPassword, setIsShowPassword] = useState(false);
+  //custom loading
+  const [Loading,setLoading] = useState(false)
 
 
   //useAuth hook calling
@@ -22,6 +26,9 @@ const UserSignUp = () => {
   const handlePasswordShow = () => {
     setIsShowPassword(!showPassword);
   };
+
+  //navigate
+  const navigate = useNavigate()
 
   //user-sign-up functionality
   const {
@@ -46,8 +53,10 @@ const UserSignUp = () => {
     const imageFile = { image: data.image[0] };
     
     try{
+      setLoading(true)
       const imgHosting = await ImageUpload({imageFile:imageFile})
       console.log(imgHosting.result.data);
+      setLoading(false)
 
 
       //user signUp
@@ -62,6 +71,7 @@ const UserSignUp = () => {
 
       toast.success("Account has been created")
       reset()
+      navigate("/")
     }catch(error){
       console.log(error);
     }
@@ -162,11 +172,11 @@ const UserSignUp = () => {
               </Link>
             </p>
             <button
-              className="w-[80%] rounded-lg bg-[#FF69B4] hover:bg-sky-600 px-6 py-2 font-medium text-white md:w-[60%]"
+              className="w-[80%] flex justify-center items-center rounded-lg bg-[#FF69B4] hover:bg-sky-600 px-6 py-2 font-medium text-white md:w-[60%]"
               type="submit"
             >
               {
-                loading ? <ClipLoader color="white"></ClipLoader> : 'Signup'
+                loading || Loading ? <ClockLoader color="white" size={30} className="" ></ClockLoader> : 'Signup'
               }
             </button>
           </form>
