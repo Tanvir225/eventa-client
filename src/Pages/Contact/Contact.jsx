@@ -9,7 +9,7 @@ const Contact = () => {
         heading="We are Eventa"
         text="We bring dream wedding to life!"
       ></Banner_1>
-      <div className="px-7">
+      <div className="px-5">
         <Contact_Form></Contact_Form>
         <Banner></Banner>
       </div>

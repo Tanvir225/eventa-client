@@ -20,7 +20,7 @@ const Card = () => {
       {/* profile name & role */}
       <div className="pt-8 text-center space-y-1">
         <h1 className="text-xl md:text-2xl">Tolarbagh Convention Hall</h1>
-        <Link to={'https://maps.app.goo.gl/7dHRhmopQbzj8qmn7'} className="text-[#FF69B4] font-semibold hover:text-gray-400 text-sm">
+        <Link to={'https://maps.app.goo.gl/7dHRhmopQbzj8qmn7'} className="text-indigo-600 font-semibold hover:text-gray-700 text-sm">
           <p className="flex justify-center items-center gap-2 py-2">
             <FaLocationArrow></FaLocationArrow>View Live Location
           </p>
@@ -30,15 +30,15 @@ const Card = () => {
       <div className="flex flex-wrap px-4 gap-5  md:px-8 justify-between items-center">
         <div className="text-center">
           <h5 className="font-medium  text-xl">500 persons</h5>
-          <p className="text-sm  text-[#FF69B4]">Capacity</p>
+          <p className="text-sm  text-indigo-600">Capacity</p>
         </div>
         <div className="text-center">
           <h5 className="font-medium text-xl">10k</h5>
-          <p className="text-sm  text-[#FF69B4]">Hall Cost</p>
+          <p className="text-sm  text-indigo-600">Hall Cost</p>
         </div>
         <div className="text-center">
           <h5 className="font-medium text-xl">1 day ago</h5>
-          <p className="text-sm  text-[#FF1493]">Last Booking</p>
+          <p className="text-sm  text-indigo-600">Last Booking</p>
         </div>
         <button className="bg-gradient-to-r from-[#9fccfa] to-[#0974f1] hover:scale-95 font-medium  w-full py-2 rounded-full hover:shadow-xl   text-white shadow-[0px_0px_10px_#E2DADA] t duration-500">
           View Profile

@@ -2,8 +2,8 @@
 import { Link } from "react-router-dom";
 const Heading = ({ text, seeAll, subHeading }) => {
   return (
-    <div className="flex items-center justify-between flex-wrap my-10 space-y-5">
-      <h2 className="font-bold text-base lg:text-2xl text-neutral-600 border-b-4 border-sky-300  py-5 border-dashed">{text}</h2>
+    <div className="flex items-center justify-between flex-wrap my-4 md:my-10 space-y-3 md:space-y-5">
+      <h2 className="font-bold text-base lg:text-2xl text-indigo-700 border-b-4 border-indigo-200  py-5 border-dashed">{text}</h2>
       <div>
         {
           subHeading ? <p className="text-[#66042D] font-semibold text-base md:text-lg">{subHeading}</p> : ""

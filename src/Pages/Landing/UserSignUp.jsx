@@ -88,7 +88,7 @@ const UserSignUp = () => {
       </div>
       <div className="flex h-full w-full overflow-hidden rounded-xl shadow-md  md:h-[100%] md:w-[80%] lg:h-[100%]">
         {/* register design side  */}
-        <div className="relative hidden h-full items-center justify-center bg-sky-400 md:flex md:w-[60%] lg:w-[40%]">
+        <div className="relative hidden h-full items-center justify-center bg-indigo-400 md:flex md:w-[60%] lg:w-[40%]">
           <div className="absolute -top-2 left-[20%] h-16 w-16 rounded-full bg-gradient-to-br  from-white via-[#60b5fa] to-[#6585dd]"></div>
           <div className="absolute bottom-[18%] left-[20%] h-20 w-20 rounded-full bg-gradient-to-br  from-white via-[#60b5fa] to-[#6585dd]"></div>
           <div className="absolute -right-7 top-[50%] h-14 w-14 -translate-y-1/2 rounded-full bg-gradient-to-br from-white via-[#60b5fa] to-[#6585dd] transition-all"></div>
@@ -105,7 +105,7 @@ const UserSignUp = () => {
         </div>
         {/* input side  */}
         <div className="flex w-full flex-col justify-center bg-white py-10 lg:w-[60%]">
-          <h2 className="pb-8 text-center text-3xl font-bold text-[#FF69B4]">
+          <h2 className="pb-8 text-center text-3xl font-bold text-indigo-600">
             Sign up Here
           </h2>
           <form
@@ -113,20 +113,20 @@ const UserSignUp = () => {
             className="flex  w-full flex-col items-center justify-center gap-4"
           >
             <input
-              className="w-[80%] rounded-lg border border-[#FF69B4] px-6 py-2 focus:outline-none focus:ring-2 focus:ring-[#8EA7E9]/50 md:w-[60%]"
+              className="w-[80%] rounded-lg border border-indigo-400 px-6 py-2 focus:outline-none focus:ring-2 focus:ring-[#8EA7E9]/50 md:w-[60%]"
               type="text"
               placeholder="Name"
               {...register("name", { required: "Name is required" })}
             />
             <input
-              className="w-[80%] rounded-lg border border-[#FF69B4] px-6 py-2 focus:outline-none focus:ring-2 focus:ring-[#8EA7E9]/50 md:w-[60%]"
+              className="w-[80%] rounded-lg border border-indigo-400 px-6 py-2 focus:outline-none focus:ring-2 focus:ring-[#8EA7E9]/50 md:w-[60%]"
               type="tel"
               placeholder="Phone"
               {...register("phone")}
               required
             />
             <input
-              className="w-[80%] rounded-lg border border-[#FF69B4] px-6 py-2 focus:outline-none focus:ring-2 focus:ring-[#8EA7E9]/50 md:w-[60%]"
+              className="w-[80%] rounded-lg border border-indigo-400 px-6 py-2 focus:outline-none focus:ring-2 focus:ring-[#8EA7E9]/50 md:w-[60%]"
               type="email"
               placeholder="Email"
               {...register("email", { required: "Email is required" })}
@@ -134,7 +134,7 @@ const UserSignUp = () => {
             />
             <div className="w-full text-center relative">
               <input
-                className="w-[80%]  rounded-lg border border-[#FF69B4] px-6 py-2 focus:outline-none focus:ring-2 focus:ring-[#8EA7E9]/50 md:w-[60%]"
+                className="w-[80%]  rounded-lg border border-indigo-400 px-6 py-2 focus:outline-none focus:ring-2 focus:ring-[#8EA7E9]/50 md:w-[60%]"
                 type={`${showPassword ? "text" : "password"}`}
                 placeholder="Password"
                 name="password"
@@ -154,7 +154,7 @@ const UserSignUp = () => {
               )}
             </div>
             <input
-              className="w-[80%] rounded-lg text-gray-400 border border-[#FF69B4] px-6 py-2 focus:outline-none focus:ring-2 focus:ring-[#8EA7E9]/50 md:w-[60%]"
+              className="w-[80%] rounded-lg text-gray-400 border border-indigo-400 px-6 py-2 focus:outline-none focus:ring-2 focus:ring-[#8EA7E9]/50 md:w-[60%]"
               type="file"
               placeholder="profile"
               name="image"
@@ -166,13 +166,13 @@ const UserSignUp = () => {
               Already have an account ?{" "}
               <Link
                 to={"/login"}
-                className="text-[#FF69B4] font-bold underline "
+                className="text-indigo-600 font-bold underline "
               >
                 Login
               </Link>
             </p>
             <button
-              className="w-[80%] flex justify-center items-center rounded-lg bg-[#FF69B4] hover:bg-sky-600 px-6 py-2 font-medium text-white md:w-[60%]"
+              className="w-[80%] flex justify-center items-center rounded-lg bg-indigo-600 hover:bg-sky-600 px-6 py-2 font-medium text-white md:w-[60%]"
               type="submit"
             >
               {

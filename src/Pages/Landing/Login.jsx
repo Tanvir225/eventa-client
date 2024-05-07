@@ -74,7 +74,7 @@ const Login = () => {
       </div>
       <div className="flex h-full w-full overflow-hidden rounded-xl shadow-md  md:h-[90%] md:w-[80%] lg:h-[80%]">
         {/* register design side  */}
-        <div className="relative hidden h-full items-center justify-center bg-sky-400 md:flex md:w-[60%] lg:w-[40%]">
+        <div className="relative hidden h-full items-center justify-center bg-indigo-400 md:flex md:w-[60%] lg:w-[40%]">
           <div className="absolute -top-2 left-[20%] h-16 w-16 rounded-full bg-gradient-to-br  from-white via-[#60b5fa] to-[#6585dd]"></div>
           <div className="absolute bottom-[18%] left-[20%] h-20 w-20 rounded-full bg-gradient-to-br  from-white via-[#60b5fa] to-[#6585dd]"></div>
           <div className="absolute -right-7 top-[50%] h-14 w-14 -translate-y-1/2 rounded-full bg-gradient-to-br from-white via-[#60b5fa] to-[#6585dd] transition-all"></div>
@@ -91,7 +91,7 @@ const Login = () => {
         </div>
         {/* input side  */}
         <div className="flex w-full flex-col justify-center bg-white py-10 lg:w-[60%]">
-          <h2 className="text-center text-3xl font-bold text-[#FF69B4] mb-3">
+          <h2 className="text-center text-3xl font-bold text-indigo-600 mb-3">
             Login Here
           </h2>
           {errors.email || errors.password ? (
@@ -105,14 +105,14 @@ const Login = () => {
             className="flex  w-full flex-col items-center justify-center gap-4"
           >
             <input
-              className="w-[80%] rounded-lg border border-[#FF69B4] px-6 py-2 focus:outline-none focus:ring-2 focus:ring-[#8EA7E9]/50 md:w-[60%]"
+              className="w-[80%] rounded-lg border border-indigo-400 px-6 py-2 focus:outline-none focus:ring-2 focus:ring-[#8EA7E9]/50 md:w-[60%]"
               type="email"
               placeholder="Email"
               {...register("email", { required: "Email is required" })}
             />
             <div className="w-full text-center relative">
               <input
-                className="w-[80%]  rounded-lg border border-[#FF69B4] px-6 py-2 focus:outline-none focus:ring-2 focus:ring-[#8EA7E9]/50 md:w-[60%]"
+                className="w-[80%]  rounded-lg border border-indigo-400 px-6 py-2 focus:outline-none focus:ring-2 focus:ring-[#8EA7E9]/50 md:w-[60%]"
                 type={`${showPassword ? "text" : "password"}`}
                 placeholder="Password"
                 name="password"
@@ -137,13 +137,13 @@ const Login = () => {
               Do not have an account ?{" "}
               <Link
                 to={"/user-sign-up"}
-                className="text-[#FF69B4] font-bold underline "
+                className="text-indigo-600 font-bold underline "
               >
                 Create one
               </Link>
             </p>
             <button
-              className="w-[80%] flex items-center justify-center rounded-lg bg-[#FF69B4] hover:bg-sky-600 px-6 py-1 font-medium text-white md:w-[60%]"
+              className="w-[80%] flex items-center justify-center rounded-lg bg-indigo-600 hover:bg-sky-600 px-6 py-1 font-medium text-white md:w-[60%]"
               type="submit"
             >
              {
@@ -159,11 +159,11 @@ const Login = () => {
           </div>
           {/* sign with google */}
           <div onClick={handleGoogleLogin} className="mx-auto flex h-[50px]  w-[200px] items-center overflow-hidden rounded-full shadow-md duration-300 hover:scale-95 hover:shadow">
-            <div className="flex h-full w-[50%] items-center bg-[#FF69B4]  pl-4 text-sm text-white">
+            <div className="flex h-full w-[50%] items-center bg-indigo-600  pl-4 text-sm text-white">
               Sign With
             </div>
-            <span className="right-0 top-0 h-0 w-0 -rotate-90 border-b-[50px] border-r-[50px] border-b-transparent border-r-[#FF69B4] group-hover:hidden"></span>
-            <span className="pr-4 text-4xl font-bold text-[#FF69B4]">
+            <span className="right-0 top-0 h-0 w-0 -rotate-90 border-b-[50px] border-r-[50px] border-b-transparent border-r-indigo-600 group-hover:hidden"></span>
+            <span className="pr-4 text-4xl font-bold text-indigo-600">
               <FaGoogle></FaGoogle>
             </span>
           </div>
@@ -171,7 +171,7 @@ const Login = () => {
             Do not have a vendor account ?{" "}
             <Link
               to={"/vendor-sign-up"}
-              className="text-[#FF69B4] font-bold underline "
+              className="text-indigo-600 font-bold underline "
             >
               Create one
             </Link>

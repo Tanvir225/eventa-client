@@ -43,12 +43,14 @@ const Contact_Form = () => {
                 placeholder="Name"
                 type="text"
                 name="from_name"
+                required
               />
               <input
                 className="flex h-12 w-full bg-white rounded-md border px-3 py-2 text-sm focus:outline-none"
                 placeholder="Email"
                 type="email"
                 name="from_email"
+                required
               />
               <input
                 className="flex h-12 w-full bg-white rounded-md border px-3 py-2 text-sm focus:outline-none"
@@ -62,6 +64,7 @@ const Contact_Form = () => {
                 name="message"
                 className="flex bg-white  w-full rounded-md border px-3 py-2 text-sm focus:outline-none"
                 type="tel"
+                required
               />
             </div>
 
@@ -73,7 +76,7 @@ const Contact_Form = () => {
         {/* Right side content */}
         <div className="w-full sm:w-1/2 space-y-5">
           <h2 className="text-2xl font-bold mb-6">Vendors!</h2>
-          <p className="bg-black text-white w-full lg:w-[70%] p-7 text-center rounded-lg">
+          <p className="bg-indigo-600 text-white w-full lg:w-[70%] p-7 text-center rounded-lg">
             If you are a registered vendor or a business looking to promote your
             brand on our portal, please send in your queries at
             bookateventa@gmail.com

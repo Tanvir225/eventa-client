@@ -72,7 +72,7 @@ const Carousel = () => {
           <Select options={options} title="Location"></Select>
           {/* button component */}
           <div className="">
-            <Button width={"200"} text={"Search"} color={"white"}></Button>
+            <Button width={"130"} text={"Search"} color={"white"}></Button>
           </div>
         </div>
 

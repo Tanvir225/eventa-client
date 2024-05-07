@@ -3,6 +3,7 @@ import CountUp from 'react-countup';
 import ScrollTrigger from 'react-scroll-trigger';
 
 
+// eslint-disable-next-line react/prop-types
 const AnimatedUtility = ({ number }) => {
     //state
     const [counter,setCounter] = useState(false)
@@ -10,7 +11,7 @@ const AnimatedUtility = ({ number }) => {
     return (
         <ScrollTrigger onEnter={()=> setCounter(true)} onExit={()=> setCounter(false)}>
             {
-                counter &&  <CountUp start={0} end={number} delay={0} duration={5} className='text-4xl text-center text-[#66042D] font-bold'>
+                counter &&  <CountUp start={0} end={number} delay={0} duration={5} className='text-4xl text-center text-white font-bold'>
                 </CountUp>
             }
         </ScrollTrigger>

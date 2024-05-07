@@ -43,8 +43,8 @@ const Select = ({options,title}) => {
       {/* dropdown - options  */}
       <div
         className={`${
-          isOpen ? "visible top-0 opacity-100 h-28 md:h-40 overflow-y-auto" : "hidden -top-4 opacity-0"
-        } relative mx-auto my-2  rounded-xl p-2 border duration-300`}
+          isOpen ? "visible top-0 opacity-100 h-28 md:h-40 overflow-y-auto " : "invisible opacity-0"
+        } relative mx-auto my-2  rounded-xl p-2 border duration-300 h-28 md:h-40 overflow-y-auto`}
       >
         {options?.map((option, idx) => (
           <div

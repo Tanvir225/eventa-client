@@ -47,8 +47,8 @@ const Navbar = () => {
       <nav
         className={
           navbarFixed
-            ? "navbar space-y-2 pb-2 px-7 bg-slate-50 border-b-2 border-sky-500 shadow-xl fixedd"
-            : "navbar px-7 bg-neutral-900  bg-opacity-10 delay-300"
+            ? "navbar space-y-2 pb-2 px-5 bg-slate-50 border-b-2 border-sky-500 shadow-xl fixedd transition-all delay-500"
+            : "navbar px-5 bg-neutral-900  bg-opacity-10 delay-300"
         }
       >
         {/* <Marqueee></Marqueee> */}

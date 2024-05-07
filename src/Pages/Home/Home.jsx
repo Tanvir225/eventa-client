@@ -20,15 +20,15 @@ const Home = () => {
   }, []);
 
   return (
-    <div className="">
+    <div className="bg-slate-50">
       <Navbar></Navbar>
       <Carousel></Carousel>
-      <div className="px-7">
+      <div className="px-5">
         {/* heading */}
         <Heading text={"Browse By Category"}></Heading>
 
         {/* categories section */}
-        <section className="flex justify-around gap-10 lg:gap-0 items-center py-5 overflow-x-auto ">
+        <section className="flex justify-around gap-10 lg:gap-0 items-center py-2 overflow-x-auto ">
           <Categories text={"categories-1"}></Categories>
           <Categories text={"categories-2"}></Categories>
           <Categories text={"categories-3"}></Categories>

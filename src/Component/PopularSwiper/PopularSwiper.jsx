@@ -14,7 +14,7 @@ const PopularSwiper = ({cards}) => {
         pagination={{ clickable: true }}
       >
         {cards?.slice(0, 20)?.map((card, index) => (
-          <SwiperSlide key={index} className="pb-5 lg:pb-10">
+          <SwiperSlide key={index} className=" lg:pb-10">
             <PopularCard
               image={card.image}
               name={card.name}

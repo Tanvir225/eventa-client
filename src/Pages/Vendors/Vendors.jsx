@@ -22,10 +22,10 @@ const Vendors = () => {
         heading="Our Vendors"
         text="We bring dream wedding to life!"
       ></Banner_1>
-      <div className="px-7 my-10">
+      <div className="px-5 my-4 md:my-10">
         {/* categories section */}
         <Heading text="Our Vendors"></Heading>
-        <section className="flex justify-between gap-7 overflow-x-auto pb-5">
+        <section className="flex justify-between gap-7 overflow-x-auto pb-3">
           <Categories text="cate-1"></Categories>
           <Categories text="cate-2"></Categories>
           <Categories text="cate-3"></Categories>
