@@ -7,6 +7,7 @@ import Categories from "../../Component/Share/Categories/Categories";
 import Heading from "../../Component/Share/Heading/Heading";
 import Navbar from "../../Component/Share/Navbar/Navbar";
 import PopularSwiper from "../../Component/PopularSwiper/PopularSwiper";
+import ScrollTop from "../../Component/Share/ScrollTop/ScrollTop";
 
 const Home = () => {
   //testing swiperslide state
@@ -43,7 +44,6 @@ const Home = () => {
           <PopularSwiper cards={card}></PopularSwiper>
         </section>
 
-        
         {/* popular venue section */}
         <section>
           <Heading text={"Popular Venue"} seeAll={"View All (100)"}></Heading>
@@ -77,8 +77,8 @@ const Home = () => {
           ></Reviews>
         </section>
 
-         {/* Featured car section*/}
-         <section>
+        {/* Featured car section*/}
+        <section>
           <Heading
             text={"Featured Car"}
             subHeading={"Lower price user Choice"}
@@ -96,6 +96,11 @@ const Home = () => {
             <MediaCard></MediaCard>
           </div>
         </section>
+      </div>
+
+      {/* scroll to top */}
+      <div className="text-right my-5 px-5">
+        <ScrollTop></ScrollTop>
       </div>
     </div>
   );
