@@ -39,18 +39,12 @@ const Carousel = () => {
 
   //   options for  select component
   const options = [
-    "Kakoli",
-    "Banani",
-    "Mohakhali",
-    "Dhanmondi",
-    "Gulshan",
-    "Ajimpur",
-    "Kakoli",
-    "Banani",
-    "Mohakhali",
-    "Dhanmondi",
-    "Gulshan",
-    "Ajimpur",
+    "Panda",
+    "Zebra",
+    "Giraffe",
+    "Lion",
+    "Monkey",
+    "Dolphin",
   ];
 
   return (
@@ -67,7 +61,7 @@ const Carousel = () => {
         </div>
 
         {/* filter option */}
-        <div className="flex flex-wrap justify-center gap-5 md:gap-7 opacity-70">
+        <div className="flex flex-wrap justify-center items-center lg:flex-nowrap gap-5 lg:gap-5 opacity-70">
           <Select options={options} title="Category"></Select>
           <Select options={options} title="Location"></Select>
           {/* button component */}

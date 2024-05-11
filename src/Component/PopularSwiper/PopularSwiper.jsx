@@ -5,12 +5,17 @@ import PopularCard from "../Share/Card/PopularCard";
 import 'swiper/css';
 import 'swiper/css/pagination';
 const PopularSwiper = ({cards}) => {
+
+  //responsive slide variable
+  const isScreen = window.innerWidth > 1440
+  const isSmallScreen = window.innerWidth < 375
+
   return (
     <div>
       <Swiper
         modules={[Pagination]}
-        spaceBetween={50}
-        slidesPerView={2}
+        spaceBetween={`${isSmallScreen ? 80 : 20}`}
+        slidesPerView={`${isScreen ? 3 : 2}`}
         pagination={{ clickable: true }}
       >
         {cards?.slice(0, 20)?.map((card, index) => (

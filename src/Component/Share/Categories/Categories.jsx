@@ -1,4 +1,6 @@
 
+/* eslint-disable react/prop-types */
+
 const Categories = ({text,src}) => {
     return (
         <div className="flex flex-col justify-center items-center text-center space-y-3 py-2">

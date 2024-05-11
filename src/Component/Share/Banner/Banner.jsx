@@ -8,7 +8,7 @@ const Banner = () => {
             <div className='flex flex-col lg:flex-row justify-between items-center gap-14 '>
                 <div className='relative'>
                     <img src="https://source.unsplash.com/500x350/?hall" alt="banner_image" className='w-full lg:w-[500px]  h-[300px] lg:h-[500px] rounded-lg object-cover' />
-                    <img src="https://source.unsplash.com/300x300/?wedding" alt="banner_image" className='w-[300px] h-[300px] rounded-lg object-cover absolute -right-9 top-16' />
+                    <img src="https://source.unsplash.com/300x300/?wedding" alt="banner_image" className='w-[300px] h-[300px] rounded-lg object-cover absolute -right-5 top-16' />
                 </div>
                 <div className='flex-1 leading-9 space-y-5 mt-5 w-full'>
                     <h2 className='text-[#66042D] text-2xl font-bold  lg:text-5xl'>this is heading</h2>
