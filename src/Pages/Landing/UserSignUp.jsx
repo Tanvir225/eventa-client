@@ -10,6 +10,7 @@ import toast from "react-hot-toast";
 import useAuth from "../../Hook/useAuth";
 import { updateProfile } from "firebase/auth";
 import { ClockLoader } from "react-spinners";
+import usePublicAxios from "../../Hook/usePublicAxios";
 
 
 const UserSignUp = () => {
@@ -21,6 +22,9 @@ const UserSignUp = () => {
 
   //useAuth hook calling
   const { signUp, loading } = useAuth();
+
+  //usePublicAxios Calling
+  const axios = usePublicAxios()
 
   //password  visibility toggle
   const handlePasswordShow = () => {
@@ -41,6 +45,7 @@ const UserSignUp = () => {
   const onSubmit = async (data) => {
     const name = data?.name;
     const email = data?.email;
+    const phone = data?.phone;
     const password = data?.password;
 
     //password checker
@@ -67,6 +72,21 @@ const UserSignUp = () => {
       await updateProfile(user,{
         displayName:name,
         photoURL:imgHosting?.result?.data?.data?.display_url
+      })
+
+      //sava user into database
+      const userInfo = {
+        name:name,
+        email:email,
+        phone:phone,
+        password:password,
+        photoURL:imgHosting?.result?.data?.data?.display_url,
+        createdAt: new Date().toLocaleString("en-US",{timeZone:"Asia/Dhaka"})
+      }
+
+      axios.post("/users",userInfo)
+      .then(result=>{
+        console.log(result.data);
       })
 
       toast.success("Account has been created")

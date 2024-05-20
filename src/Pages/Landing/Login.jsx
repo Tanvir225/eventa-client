@@ -8,6 +8,7 @@ import { RiAlertLine } from "react-icons/ri";
 import useAuth from "../../Hook/useAuth";
 import toast from "react-hot-toast";
 import { ClockLoader } from "react-spinners";
+import usePublicAxios from "../../Hook/usePublicAxios";
 
 const Login = () => {
   //state
@@ -15,6 +16,9 @@ const Login = () => {
 
   //useAuth hook calling
   const { login, loading,googleLogin } = useAuth();
+
+  //usePublicAxios calling
+  const axios = usePublicAxios()
 
   //navigate
   const navigate = useNavigate()
@@ -28,7 +32,21 @@ const Login = () => {
   const handleGoogleLogin = ()=>{
     googleLogin()
     .then((res) => {
-      console.log(res);
+      console.log();
+
+      //sava user into database
+      const userInfo = {
+        name:res?.user?.displayName,
+        email:res?.user?.email,
+        photoURL:res?.user?.photoURL,
+        createdAt: res?.user?.metadata?.creationTime,
+        lastLogin: res?.user?.metadata?.lastSignInTime
+      }
+
+      axios.post("/users",userInfo)
+      .then(result=>{
+        console.log(result.data);
+      })
       toast.success("Successfully Login")
       navigate("/");
     })
@@ -51,6 +69,17 @@ const Login = () => {
       // eslint-disable-next-line no-unused-vars
       .then((res) => {
         toast.success("Successfully Login");
+
+        //patch user
+        const userUpdate = {
+          lastLogin : new Date().toLocaleString("en-US",{timeZone:"Asia/Dhaka"})
+ 
+        }
+        axios.patch(`/users/${email}`,userUpdate)
+        .then(result=>{
+          console.log(result.data);
+        })
+
         reset()
         navigate("/")
       })

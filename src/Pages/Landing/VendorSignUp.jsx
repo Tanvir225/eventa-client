@@ -9,6 +9,7 @@ import ImageUpload from "../../Utils/ImageUpload";
 import { updateProfile } from "firebase/auth";
 import toast from "react-hot-toast";
 import { ClockLoader } from "react-spinners";
+import usePublicAxios from "../../Hook/usePublicAxios";
 const VendorSignUp = () => {
   //state
   const [showPassword, setIsShowPassword] = useState(false);
@@ -18,6 +19,9 @@ const VendorSignUp = () => {
 
   //useAuth hook call
   const { signUp, loading } = useAuth();
+
+  //usePublicAxios calling
+  const axios = usePublicAxios()
 
   // array of options  for select dropdown
   const options = ["Convention Hall", "Car", "Flower", "Photographer"];
@@ -36,6 +40,7 @@ const VendorSignUp = () => {
   const onSubmit = async (data) => {
     const name = data?.name;
     const email = data?.email;
+    const phone = data?.phone;
     const password = data?.password;
 
     //password checker
@@ -63,6 +68,23 @@ const VendorSignUp = () => {
         displayName: name,
         photoURL: imgHosting?.result?.data?.data?.display_url,
       });
+
+      
+      //sava user into database
+      const userInfo = {
+        name:name,
+        email:email,
+        phone:phone,
+        vendor:selectedValue,
+        password:password,
+        photoURL:imgHosting?.result?.data?.data?.display_url,
+        createdAt: new Date().toLocaleString("en-US",{timeZone:"Asia/Dhaka"})
+      }
+
+      axios.post("/users",userInfo)
+      .then(result=>{
+        console.log(result);
+      })
 
       toast.success("Account has been created");
       reset();
