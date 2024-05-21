@@ -61,13 +61,6 @@ const AuthProvider = ({children}) => {
                     setLoading(false)
                 })
             }
-
-            else{
-                axios.post("/logout")
-                .then(result=>{
-                    console.log(result.data);
-                })
-            }
         }) 
 
         return ()=>{unsubscribe()}
