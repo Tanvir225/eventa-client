@@ -78,7 +78,8 @@ const VendorSignUp = () => {
         vendor:selectedValue,
         password:password,
         photoURL:imgHosting?.result?.data?.data?.display_url,
-        createdAt: new Date().toLocaleString("en-US",{timeZone:"Asia/Dhaka"})
+        createdAt: new Date().toLocaleString("en-US",{timeZone:"Asia/Dhaka"}),
+        status:'pending'
       }
 
       axios.post("/users",userInfo)
