@@ -13,9 +13,10 @@ import usePublicAxios from "../../Hook/usePublicAxios";
 const Login = () => {
   //state
   const [showPassword, setIsShowPassword] = useState(false);
+  const [Loading,setLoading] = useState(false)
 
   //useAuth hook calling
-  const { login, loading,googleLogin } = useAuth();
+  const { login,googleLogin } = useAuth();
 
   //usePublicAxios calling
   const axios = usePublicAxios()
@@ -30,6 +31,7 @@ const Login = () => {
 
   //google Login functionality
   const handleGoogleLogin = ()=>{
+    setLoading(true)
     googleLogin()
     .then((res) => {
       console.log();
@@ -49,6 +51,7 @@ const Login = () => {
       })
       toast.success("Successfully Login")
       navigate("/");
+      setLoading(false)
     })
   }
 
@@ -63,7 +66,7 @@ const Login = () => {
   const onSubmit = (data) => {
     const email = data?.email;
     const password = data?.password;
-
+    setLoading(true)
     //login functionality
     login(email, password)
       // eslint-disable-next-line no-unused-vars
@@ -82,12 +85,16 @@ const Login = () => {
 
         reset()
         navigate("/")
+        setLoading(false)
       })
       .catch((err) => {
         console.log(err.message);
+        setLoading(true)
         if (String(err).includes("FirebaseError")) {
+          setLoading(false)
           return toast.error("Invalid Email or Password");
         } else {
+          setLoading(false)
           return toast.error("Something went wrong!");
         }
       });
@@ -175,8 +182,8 @@ const Login = () => {
               className="w-[80%] flex items-center justify-center rounded-lg bg-indigo-600 hover:bg-sky-600 px-6 py-1 font-medium text-white md:w-[60%]"
               type="submit"
             >
-             {
-              loading ? <ClockLoader color="white" size={30}></ClockLoader> : " Login"
+             {  
+               Loading ? <ClockLoader color="white" size={30}></ClockLoader> : " Login"
              }
             </button>
           </form>
