@@ -21,7 +21,7 @@ const UserSignUp = () => {
 
 
   //useAuth hook calling
-  const { signUp, loading } = useAuth();
+  const { signUp } = useAuth();
 
   //usePublicAxios Calling
   const axios = usePublicAxios()
@@ -196,7 +196,7 @@ const UserSignUp = () => {
               type="submit"
             >
               {
-                loading || Loading ? <ClockLoader color="white" size={30} className="" ></ClockLoader> : 'Signup'
+                Loading ? <ClockLoader color="white" size={30} className="" ></ClockLoader> : 'Signup'
               }
             </button>
           </form>

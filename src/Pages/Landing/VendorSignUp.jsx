@@ -18,7 +18,7 @@ const VendorSignUp = () => {
   const [Loading, setLoading] = useState(false);
 
   //useAuth hook call
-  const { signUp, loading } = useAuth();
+  const { signUp } = useAuth();
 
   //usePublicAxios calling
   const axios = usePublicAxios()
@@ -253,7 +253,7 @@ const VendorSignUp = () => {
               className="w-[80%] flex justify-center items-center rounded-lg bg-indigo-600 hover:bg-sky-600 px-6 py-2 font-medium text-white md:w-[60%]"
               type="submit"
             >
-              {loading || Loading ? (
+              {Loading ? (
                 <ClockLoader size={30} color="white"></ClockLoader>
               ) : (
                 "Signup"
