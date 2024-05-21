@@ -42,13 +42,24 @@ const Login = () => {
         email:res?.user?.email,
         photoURL:res?.user?.photoURL,
         createdAt: res?.user?.metadata?.creationTime,
-        lastLogin: res?.user?.metadata?.lastSignInTime
+       
       }
 
       axios.post("/users",userInfo)
       .then(result=>{
         console.log(result.data);
       })
+
+      //patch user
+      const userUpdate = {
+        lastLogin : new Date().toLocaleString("en-US",{timeZone:"Asia/Dhaka"})
+
+      }
+      axios.patch(`/users/${res?.user?.email}`,userUpdate)
+      .then(result=>{
+        console.log(result.data);
+      })
+
       toast.success("Successfully Login")
       navigate("/");
       setLoading(false)
