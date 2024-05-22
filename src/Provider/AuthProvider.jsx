@@ -11,7 +11,7 @@ const AuthProvider = ({children}) => {
 
     //state
     const [user,setUser] = useState(null)
-    const [loading,setLoading] = useState(false)
+    const [loading,setLoading] = useState(true)
 
     //usePublicAxios calling
     const axios = usePublicAxios()
@@ -61,6 +61,9 @@ const AuthProvider = ({children}) => {
                     setLoading(false)
                 })
             }
+
+         
+           
         }) 
 
         return ()=>{unsubscribe()}

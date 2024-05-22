@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { useForm } from "react-hook-form";
 import { FaArrowLeft, FaGoogle, FaEye, FaEyeSlash } from "react-icons/fa";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import animation from "../../assets/landing_animation.json";
 import Lottie from "lottie-react";
 import { RiAlertLine } from "react-icons/ri";
@@ -23,6 +23,11 @@ const Login = () => {
 
   //navigate
   const navigate = useNavigate()
+
+  //location
+  const location = useLocation()
+
+  let from = location?.state?.from?.pathname || "/"
 
   //password  visibility toggle
   const handlePasswordShow = () => {
@@ -61,8 +66,8 @@ const Login = () => {
       })
 
       toast.success("Successfully Login")
-      navigate("/");
       setLoading(false)
+      navigate(from,{replace:true});
     })
   }
 
@@ -95,8 +100,8 @@ const Login = () => {
         })
 
         reset()
-        navigate("/")
         setLoading(false)
+        navigate(from,{replace:true});
       })
       .catch((err) => {
         console.log(err.message);

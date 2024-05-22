@@ -11,6 +11,10 @@ import Media from "../Pages/Media/Media";
 import Vendors from "../Pages/Vendors/Vendors";
 import Venue from "../Pages/Venue/Venue";
 import ResetPass from "../Pages/Landing/ResetPass";
+import Dashboard from "../Layout/Dashboard";
+import DashHome from "../Pages/Dashboard/Admin/DashHome";
+import PrivateRoute from "./PrivateRoute";
+import Users from "../Pages/Dashboard/Admin/Users";
 
 
 const router = createBrowserRouter([
@@ -63,6 +67,23 @@ const router = createBrowserRouter([
     path: "/vendor-sign-up",
     element: <VendorSignUp></VendorSignUp>,
   },
+
+  //dashboard route
+  {
+    path:'dashboard',
+    element: <PrivateRoute><Dashboard></Dashboard></PrivateRoute>,
+    errorElement: <ErrorPage></ErrorPage>,
+    children: [
+      {
+        path: "/dashboard",
+        element: <DashHome></DashHome>
+      },
+      {
+        path: "users",
+        element: <Users></Users>
+      }
+    ]
+  }
 ]);
 
 export default router;

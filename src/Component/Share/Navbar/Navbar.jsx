@@ -89,7 +89,7 @@ const Navbar = () => {
                       </a>
                     </li>
                     <li>
-                      <Link to={"/"}>Dashboard</Link>
+                      <Link to={"/dashboard"}>Dashboard</Link>
                     </li>
                     <li>
                       <Link to={"/"}>Settings</Link>
@@ -129,7 +129,7 @@ const Navbar = () => {
                   </a>
                 </li>
                 <li>
-                  <Link to={"/"}>Dashboard</Link>
+                  <Link to={"/dashboard"}>Dashboard</Link>
                 </li>
                 <li>
                   <Link to={"/"}>Settings</Link>
