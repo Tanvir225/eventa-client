@@ -12,9 +12,11 @@ import Vendors from "../Pages/Vendors/Vendors";
 import Venue from "../Pages/Venue/Venue";
 import ResetPass from "../Pages/Landing/ResetPass";
 import Dashboard from "../Layout/Dashboard";
-import DashHome from "../Pages/Dashboard/Admin/DashHome";
 import PrivateRoute from "./PrivateRoute";
 import Users from "../Pages/Dashboard/Admin/Users";
+import UserHome from "../Pages/Dashboard/User/UserHome";
+import MyBooking from "../Pages/Dashboard/User/MyBooking";
+import AdminHome from "../Pages/Dashboard/Admin/AdminHome";
 
 
 const router = createBrowserRouter([
@@ -74,9 +76,22 @@ const router = createBrowserRouter([
     element: <PrivateRoute><Dashboard></Dashboard></PrivateRoute>,
     errorElement: <ErrorPage></ErrorPage>,
     children: [
+
+      //users route
       {
         path: "/dashboard",
-        element: <DashHome></DashHome>
+        element: <UserHome></UserHome>
+      },
+      {
+        path: "my-booking",
+        element: <MyBooking></MyBooking>
+      },
+
+
+      //admin route
+      {
+        path: "admin-home",
+        element: <AdminHome></AdminHome>
       },
       {
         path: "users",

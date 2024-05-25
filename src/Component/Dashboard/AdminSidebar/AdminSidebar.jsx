@@ -7,7 +7,7 @@ const AdminSidebar = () => {
 
     return (
         <div className="space-y-5 text-white">
-            <NavLink to={"/dashboard"} className={"flex items-center gap-2 justify-center"}>
+            <NavLink to={"admin-home"} className={"flex items-center gap-2 justify-center"}>
                 <AiOutlineHome className="text-2xl"></AiOutlineHome>Home
             </NavLink>
             <NavLink to={"users"} className={"flex items-center gap-2 justify-center"}>

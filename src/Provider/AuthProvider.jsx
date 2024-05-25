@@ -1,5 +1,5 @@
 /* eslint-disable react/prop-types */
-import { GoogleAuthProvider, createUserWithEmailAndPassword, onAuthStateChanged, sendPasswordResetEmail, signInWithEmailAndPassword, signInWithPopup } from "firebase/auth";
+import { GoogleAuthProvider, createUserWithEmailAndPassword, onAuthStateChanged, sendPasswordResetEmail, signInWithEmailAndPassword, signInWithPopup, signOut } from "firebase/auth";
 import { createContext, useEffect, useState } from "react";
 import auth from "../Firebase/firebase.config";
 import usePublicAxios from "../Hook/usePublicAxios";
@@ -36,9 +36,24 @@ const AuthProvider = ({children}) => {
     }
 
     //logout user
-    const logOut = ()=>{
+    const logOut = async()=>{
         setLoading(true)
-        return auth.signOut(auth)
+
+        try{
+            //call logout endpoint for remove token
+            await axios.post('/logout')
+
+            //signout from firebase
+            await signOut(auth)
+            setUser(null)
+        }
+        catch(error){
+                console.log("error during logout",error)
+        }
+
+        finally{
+            setLoading(false)
+        }
     }
 
     //google login

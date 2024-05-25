@@ -1,6 +1,6 @@
-a.active{
+div a.active{
     border-bottom: 2px solid white;
-    width: 50%;
+    width: 60%;
     margin: 0 auto;
     padding:4px;
 }
