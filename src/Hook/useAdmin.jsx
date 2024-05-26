@@ -11,7 +11,7 @@ const useAdmin = () => {
     const {user,loading} = useAuth()
 
     //ten-stack query
-    const {data:isAdmin,isLoading} = useQuery({
+    const {data:isAdmin,isPending} = useQuery({
         enabled: !!user && !loading,
         queryKey: ['admin',user?.email],
         queryFn: async()=>{
@@ -20,7 +20,8 @@ const useAdmin = () => {
         }
     })
 
-    return [isAdmin,isLoading]
+    return [isAdmin,isPending]
 };
+
 
 export default useAdmin;

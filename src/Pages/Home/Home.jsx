@@ -26,7 +26,7 @@ const Home = () => {
       <Carousel></Carousel>
       <div className="px-5">
         {/* heading */}
-        <Heading text={"Browse By Category"}></Heading>
+        <Heading text="Browse By Category"></Heading>
 
         {/* categories section */}
         <section className="flex justify-around gap-10 lg:gap-0 items-center py-2 overflow-x-auto ">

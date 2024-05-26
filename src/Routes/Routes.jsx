@@ -17,6 +17,7 @@ import Users from "../Pages/Dashboard/Admin/Users";
 import UserHome from "../Pages/Dashboard/User/UserHome";
 import MyBooking from "../Pages/Dashboard/User/MyBooking";
 import AdminHome from "../Pages/Dashboard/Admin/AdminHome";
+import AdminRoute from "./AdminRoute";
 
 
 const router = createBrowserRouter([
@@ -91,11 +92,11 @@ const router = createBrowserRouter([
       //admin route
       {
         path: "admin-home",
-        element: <AdminHome></AdminHome>
+        element: <AdminRoute><AdminHome></AdminHome></AdminRoute>
       },
       {
         path: "users",
-        element: <Users></Users>
+        element: <AdminRoute><Users></Users></AdminRoute>
       }
     ]
   }

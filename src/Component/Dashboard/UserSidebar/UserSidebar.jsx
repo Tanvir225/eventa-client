@@ -9,7 +9,7 @@ const UserSidebar = () => {
         to={"/dashboard"}
         className={"flex items-center gap-2 justify-center"}
       >
-        <AiOutlineHome className="text-2xl"></AiOutlineHome>Home
+        <AiOutlineHome className="text-2xl"></AiOutlineHome>User
       </NavLink>
       <NavLink
         to={"my-booking"}

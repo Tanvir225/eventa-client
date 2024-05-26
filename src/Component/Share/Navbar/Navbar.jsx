@@ -6,6 +6,7 @@ import Button from "../Button";
 import { Link } from "react-router-dom";
 import useAuth from "../../../Hook/useAuth";
 import toast from "react-hot-toast";
+import useAdmin from "../../../Hook/useAdmin";
 
 const Navbar = () => {
   //state
@@ -13,6 +14,9 @@ const Navbar = () => {
 
   //useAuth hook calling
   const { user, logOut } = useAuth();
+
+  //useAdmin hook calling
+  const [isAdmin] = useAdmin();
 
   //logout functionality
   const logOutUser = () => {
@@ -88,9 +92,16 @@ const Navbar = () => {
                         {user?.displayName}
                       </a>
                     </li>
-                    <li>
-                      <Link to={"/dashboard"}>Dashboard</Link>
-                    </li>
+                    {user && isAdmin && (
+                      <li>
+                        <Link to={"/dashboard/admin-home"}>Dashboard</Link>
+                      </li>
+                    )}
+                    {user && !isAdmin && (
+                      <li>
+                        <Link to={"/dashboard"}>Dashboard</Link>
+                      </li>
+                    )}
                     <li>
                       <Link to={"/"}>Settings</Link>
                     </li>
@@ -128,9 +139,16 @@ const Navbar = () => {
                     {user?.displayName}
                   </a>
                 </li>
-                <li>
-                  <Link to={"/dashboard"}>Dashboard</Link>
-                </li>
+                {user && isAdmin && (
+                  <li>
+                    <Link to={"/dashboard/admin-home"}>Dashboard</Link>
+                  </li>
+                )}
+                {user && !isAdmin && (
+                  <li>
+                    <Link to={"/dashboard"}>Dashboard</Link>
+                  </li>
+                )}
                 <li>
                   <Link to={"/"}>Settings</Link>
                 </li>
