@@ -8,7 +8,6 @@ import useAuth from "../../../Hook/useAuth";
 import toast from "react-hot-toast";
 import useUserRole from "../../../Hook/useUserRole";
 
-
 const Navbar = () => {
   //state
   const [navbarFixed, setNavbarFixed] = useState(false);
@@ -17,8 +16,8 @@ const Navbar = () => {
   const { user, logOut } = useAuth();
 
   //useUserRole hook calling
-  const [roleData] = useUserRole()
-  const {isAdmin,isVendor} = roleData || {}
+  const [roleData] = useUserRole();
+  const { isAdmin, isVendor } = roleData || {};
 
   //logout functionality
   const logOutUser = () => {
@@ -89,10 +88,8 @@ const Navbar = () => {
                     tabIndex={0}
                     className="mt-1 z-[1] p-3 font-semibold shadow menu menu-sm dropdown-content bg-base-100 rounded-box w-44 text-neutral-800"
                   >
-                    <li className="border-b-2 ">
-                      <a className="justify-between text-sky-400">
-                        {user?.displayName}
-                      </a>
+                    <li className="border-b-2 justify-between text-sky-400 p-2">
+                      {user?.displayName}
                     </li>
                     {user && isAdmin && (
                       <li>
@@ -141,10 +138,8 @@ const Navbar = () => {
                 tabIndex={0}
                 className="mt-1 z-[1] p-2 font-semibold shadow menu menu-sm dropdown-content bg-base-100 rounded-box w-44 text-neutral-800"
               >
-                <li className="border-b-2 ">
-                  <a className="justify-between text-sky-400">
-                    {user?.displayName}
-                  </a>
+                <li className="border-b-2 justify-between text-sky-400 p-2">
+                  {user?.displayName}
                 </li>
                 {user && isAdmin && (
                   <li>
