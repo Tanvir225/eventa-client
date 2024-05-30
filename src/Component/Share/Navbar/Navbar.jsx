@@ -6,7 +6,8 @@ import Button from "../Button";
 import { Link } from "react-router-dom";
 import useAuth from "../../../Hook/useAuth";
 import toast from "react-hot-toast";
-import useAdmin from "../../../Hook/useAdmin";
+import useUserRole from "../../../Hook/useUserRole";
+
 
 const Navbar = () => {
   //state
@@ -15,8 +16,9 @@ const Navbar = () => {
   //useAuth hook calling
   const { user, logOut } = useAuth();
 
-  //useAdmin hook calling
-  const [isAdmin] = useAdmin();
+  //useUserRole hook calling
+  const [roleData] = useUserRole()
+  const {isAdmin,isVendor} = roleData || {}
 
   //logout functionality
   const logOutUser = () => {
@@ -97,7 +99,12 @@ const Navbar = () => {
                         <Link to={"/dashboard/admin-home"}>Dashboard</Link>
                       </li>
                     )}
-                    {user && !isAdmin && (
+                    {user && !isAdmin && isVendor && (
+                      <li>
+                        <Link to={"/dashboard/vendor-home"}>Dashboard</Link>
+                      </li>
+                    )}
+                    {user && !isAdmin && !isVendor && (
                       <li>
                         <Link to={"/dashboard"}>Dashboard</Link>
                       </li>
@@ -144,7 +151,12 @@ const Navbar = () => {
                     <Link to={"/dashboard/admin-home"}>Dashboard</Link>
                   </li>
                 )}
-                {user && !isAdmin && (
+                {user && !isAdmin && isVendor && (
+                  <li>
+                    <Link to={"/dashboard/vendor-home"}>Dashboard</Link>
+                  </li>
+                )}
+                {user && !isAdmin && !isVendor && (
                   <li>
                     <Link to={"/dashboard"}>Dashboard</Link>
                   </li>

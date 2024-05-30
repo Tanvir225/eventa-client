@@ -18,6 +18,7 @@ import UserHome from "../Pages/Dashboard/User/UserHome";
 import MyBooking from "../Pages/Dashboard/User/MyBooking";
 import AdminHome from "../Pages/Dashboard/Admin/AdminHome";
 import AdminRoute from "./AdminRoute";
+import VendorHome from "../Pages/Dashboard/Vendor/VendorHome";
 
 
 const router = createBrowserRouter([
@@ -97,6 +98,14 @@ const router = createBrowserRouter([
       {
         path: "users",
         element: <AdminRoute><Users></Users></AdminRoute>
+      },
+
+
+
+      //vendor route
+      {
+        path:"vendor-home",
+        element: <VendorHome></VendorHome>
       }
     ]
   }

@@ -1,18 +1,21 @@
 import { Outlet } from "react-router-dom";
 import AdminSidebar from "../Component/Dashboard/AdminSidebar/AdminSidebar";
 import UserSidebar from "../Component/Dashboard/UserSidebar/UserSidebar";
-import useAdmin from "../Hook/useAdmin";
 import SharedSidebar from "../Component/Dashboard/SharedSidebar/SharedSidebar";
 
+import VendorSidebar from "../Component/Dashboard/VendorSidebar.jsx/VendorSidebar";
+import useUserRole from "../Hook/useUserRole";
+
 const Dashboard = () => {
-  //admin hook call
-  const [isAdmin] = useAdmin();
-  console.log(isAdmin);
+
+  //useUserRole hook call
+  const [roleDate] = useUserRole()
+  const {isAdmin,isVendor,isVendorSatus} = roleDate || {}
 
   return (
     <section className="grid grid-cols-12 gap-5">
       <div className="hidden lg:block lg:col-span-2 bg-indigo-600 h-screen p-7">
-        {isAdmin ? <AdminSidebar></AdminSidebar> : <UserSidebar></UserSidebar>}
+        {isAdmin ? <AdminSidebar></AdminSidebar> : isVendor ? <VendorSidebar></VendorSidebar> : <UserSidebar></UserSidebar>}
         <div className="divider divider-info"></div>
         <SharedSidebar></SharedSidebar>
       </div>

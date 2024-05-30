@@ -44,6 +44,32 @@ const Users = () => {
     });
   };
 
+  //handleMakeVendor
+  const handleMakeVendor = (user) => {
+    swal({
+      title: "Are you sure?",
+      text: "Once Make vendor, you will not be able to undo!",
+      icon: "warning",
+      buttons: true,
+      dangerMode: true,
+    }).then((willDelete) => {
+      if (willDelete) {
+        axios
+          .patch(`/users/${user?.email}`, { role: "vendor",  status: "ok" })
+
+          .then((result) => {
+            console.log(result.data);
+            if (result?.data?.modifiedCount > 0) {
+              swal(`${user?.name}! you are now vendor`, {
+                icon: "success",
+              });
+              refetch();
+            }
+          });
+      }
+    });
+  };
+
   //handleDelete functionality
   const handleDelete = (user) => {
     swal({
@@ -108,21 +134,18 @@ const Users = () => {
               <td>{user.name}</td>
               <td>{user.email}</td>
               <td>{user.role}</td>
-              <td>
-                {
-                  user?.vendor ? user?.vendor : "...."
-                }
-              </td>
+              <td>{user?.vendor ? user?.vendor : "...."}</td>
               <td>
                 {user?.status === "pending" ? (
-                 (
                   <button
+                    onClick={() => handleMakeVendor(user)}
                     className="bg-red-600 btn-sm btn text-white hover:bg-black"
                   >
-                    Pending
+                    Approved
                   </button>
-                )
-                ) : "ok"}
+                ) : (
+                  "ok"
+                )}
               </td>
 
               <td>

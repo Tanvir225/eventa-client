@@ -20,12 +20,13 @@ const useAxios = () => {
     },
     async (error) => {
       const status = error.response?.status;
+      console.log(status);
       if (status === 401 || status === 403) {
         try {
           // Log out logic
           await logOut();
           // Redirecting to login page after logout
-          navigate("/login");
+          navigate("/login",{ replace: true });
         } catch (logoutError) {
           console.error("Error during logout:", logoutError);
         }

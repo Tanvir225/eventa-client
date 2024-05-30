@@ -51,9 +51,7 @@ const AuthProvider = ({children}) => {
                 console.log("error during logout",error)
         }
 
-        finally{
-            setLoading(false)
-        }
+        setLoading(false)
     }
 
     //google login
