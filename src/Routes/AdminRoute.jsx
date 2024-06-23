@@ -1,21 +1,22 @@
 /* eslint-disable react/prop-types */
 import { Navigate, useLocation } from "react-router-dom";
 import useAuth from "../Hook/useAuth";
-import useUserRole from "../Hook/useUserRole";
+import { useContext } from "react";
+import { UserRoleContext } from "../Provider/UserRoleProvider";
 
 
 const AdminRoute = ({children}) => {
   //users and loading
   const { user, loading } = useAuth();
+  const roleContext = useContext(UserRoleContext)
+  const {roleData,Loading} = roleContext || {}
 
-  //useUserRole hook call
-  const [roleData] = useUserRole()
-  const {isAdmin,isPending} = roleData || {}
+  console.log(roleData);
 
   //location
   const location = useLocation();
 
-  if (loading || isPending) {
+  if (loading || Loading) {
     return (
       <p className="flex justify-center items-center min-h-screen">
         <span className="loading loading-infinity loading-lg"></span>
@@ -23,11 +24,11 @@ const AdminRoute = ({children}) => {
     );
   }
 
-  if (user && isAdmin) {
-    return children;
+  if (!user || !roleData?.isAdmin ) {
+    return <Navigate to={"/"} state={{ from: location }} replace />;
   }
 
-  return <Navigate to={"/login"} state={{ from: location }} replace></Navigate>;
+  return children;
 };
 
 export default AdminRoute;

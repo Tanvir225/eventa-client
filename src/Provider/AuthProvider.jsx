@@ -44,14 +44,13 @@ const AuthProvider = ({children}) => {
             await axios.post('/logout')
 
             //signout from firebase
-            await signOut(auth)
-            setUser(null)
+             await signOut(auth)
+            
         }
         catch(error){
                 console.log("error during logout",error)
         }
 
-        setLoading(false)
     }
 
     //google login
@@ -76,11 +75,11 @@ const AuthProvider = ({children}) => {
             }
 
          
-           
+            
         }) 
 
         return ()=>{unsubscribe()}
-    },[axios])
+    },[axios,user])
 
     //auth value as a object
     const authValue = {

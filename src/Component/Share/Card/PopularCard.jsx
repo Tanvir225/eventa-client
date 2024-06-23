@@ -7,7 +7,7 @@ import { Link } from 'react-router-dom';
 const PopularCard = ({name,price,location,image}) => {
     return (
         <div className='w-[170px] h-[200px] md:w-full md:h-full lg:px-7 space-y-3 text-[11px] md:text-base  text-gray-600'>
-            <img src={image} className='w-full md:h-[200px] rounded-lg object-cover' alt="pupularvenue" />
+            <img src={image} className='w-full md:h-[200px] rounded-lg object-cover' alt="" />
             <h3 className="text-[14px] md:text-xl font-semibold">{name}</h3>
             <div className='flex items-center justify-between'>
                 <p>৳ {price}</p>

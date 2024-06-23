@@ -11,7 +11,7 @@ import ScrollTop from "../../Component/Share/ScrollTop/ScrollTop";
 
 const Home = () => {
   //testing swiperslide state
-  const [card, setCard] = useState([]);
+  const [card, setCard] = useState();
 
   //useEffect
   useEffect(() => {

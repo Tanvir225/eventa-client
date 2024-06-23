@@ -8,6 +8,7 @@ import { Navigation } from 'swiper/modules';
 import { Link } from 'react-router-dom';
 
 
+
 const Reviews = ({ review, user_name, user_image }) => {
     return (
         <section
@@ -16,8 +17,8 @@ const Reviews = ({ review, user_name, user_image }) => {
                 <h2 className="text-5xl text-white font-bold">Meet Our Reviews</h2>
                 <p className="text-base text-white font-light w-full lg:w-3/4">
                     There are many variations of passages of Lorem Ipsum available, but
-                    the majority have suffered alteration in some form, by injected
-                    humour, or randomised words which don't look even slightly believable.
+                    the majority have suffered alt={user_name}eration in some form, by injected
+                    humour, or randomised words which dont look even slightly believable.
                 </p>
                 <Link to={"/about"} className="p-4 btn bg-white text-[#66042D] w-64 rounded-lg">About us</Link>
             </div>
@@ -37,7 +38,7 @@ const Reviews = ({ review, user_name, user_image }) => {
                                     </div>
                                 </div>
                                 <div className="absolute -top-5 -left-5 rounded-lg ">
-                                    <img src={`${user_image}`} alt className='w-[60px] h-[60px] rounded-full' />
+                                    <img src={`${user_image}`} alt={user_name} className='w-[60px] h-[60px] rounded-full' />
                                 </div>
                             </div>
                         </div>
@@ -55,7 +56,7 @@ const Reviews = ({ review, user_name, user_image }) => {
                                     </div>
                                 </div>
                                 <div className="absolute -top-5 -left-5 rounded-lg ">
-                                    <img src={`${user_image}`} alt className='w-[60px] h-[60px] rounded-full' />
+                                    <img src={`${user_image}`} alt={user_name} className='w-[60px] h-[60px] rounded-full' />
                                 </div>
                             </div>
                         </div>
@@ -72,7 +73,7 @@ const Reviews = ({ review, user_name, user_image }) => {
                                     </div>
                                 </div>
                                 <div className="absolute -top-5 -left-5 rounded-lg ">
-                                    <img src={`${user_image}`} alt="" className='w-[60px] h-[60px] rounded-full' />
+                                    <img src={`${user_image}`} alt={user_name} className='w-[60px] h-[60px] rounded-full' />
                                 </div>
                             </div>
                         </div>
@@ -91,7 +92,7 @@ const Reviews = ({ review, user_name, user_image }) => {
                                     </div>
                                 </div>
                                 <div className="absolute -top-5 -left-5 rounded-lg ">
-                                    <img src={`${user_image}`} alt className='w-[60px] h-[60px] rounded-full' />
+                                    <img src={`${user_image}`} alt={user_name} className='w-[60px] h-[60px] rounded-full' />
                                 </div>
                             </div>
                         </div>
@@ -109,7 +110,7 @@ const Reviews = ({ review, user_name, user_image }) => {
                                     </div>
                                 </div>
                                 <div className="absolute -top-5 -left-5 rounded-lg ">
-                                    <img src={`${user_image}`} alt className='w-[60px] h-[60px] rounded-full' />
+                                    <img src={`${user_image}`} alt={user_name} className='w-[60px] h-[60px] rounded-full' />
                                 </div>
                             </div>
                         </div>
@@ -126,7 +127,7 @@ const Reviews = ({ review, user_name, user_image }) => {
                                     </div>
                                 </div>
                                 <div className="absolute -top-5 -left-5 rounded-lg ">
-                                    <img src={`${user_image}`} alt="" className='w-[60px] h-[60px] rounded-full' />
+                                    <img src={`${user_image}`} alt={user_name} className='w-[60px] h-[60px] rounded-full' />
                                 </div>
                             </div>
                         </div>

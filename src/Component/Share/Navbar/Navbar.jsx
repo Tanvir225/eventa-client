@@ -9,7 +9,7 @@ import toast from "react-hot-toast";
 import useUserRole from "../../../Hook/useUserRole";
 
 const Navbar = () => {
-  //state
+  
   const [navbarFixed, setNavbarFixed] = useState(false);
 
   //useAuth hook calling
