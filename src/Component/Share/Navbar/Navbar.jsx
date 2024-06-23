@@ -16,7 +16,7 @@ const Navbar = () => {
   const { user, logOut } = useAuth();
 
   //useUserRole hook calling
-  const [roleData] = useUserRole();
+  const {roleData} = useUserRole();
   const { isAdmin, isVendor } = roleData || {};
 
   //logout functionality

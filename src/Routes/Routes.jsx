@@ -19,6 +19,7 @@ import MyBooking from "../Pages/Dashboard/User/MyBooking";
 import AdminHome from "../Pages/Dashboard/Admin/AdminHome";
 import AdminRoute from "./AdminRoute";
 import VendorHome from "../Pages/Dashboard/Vendor/VendorHome";
+import VendorRoute from "./VendorRoute";
 
 
 const router = createBrowserRouter([
@@ -105,7 +106,7 @@ const router = createBrowserRouter([
       //vendor route
       {
         path:"vendor-home",
-        element: <VendorHome></VendorHome>
+        element: <VendorRoute><VendorHome></VendorHome></VendorRoute>
       }
     ]
   }

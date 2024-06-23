@@ -11,9 +11,7 @@ import Drawer from "react-modern-drawer";
 
 const Dashboard = () => {
   //useUserRole hook call
-  const [roleDate] = useUserRole();
-
-  const { isAdmin, isVendor, isVendorSatus } = roleDate || {};
+  const {roleData} = useUserRole();
 
   //drawer state
   const [isOpen, setIsOpen] = useState(false);
@@ -25,7 +23,7 @@ const Dashboard = () => {
   return (
     <section>
       {/* menu in mobile device */}
-      <div className={`lg:hidden flex justify-between sicky z-20 text-white p-3 bg-indigo-500 ${isVendorSatus && 'hidden'}`}>
+      <div className={`lg:hidden flex justify-between sicky z-20 text-white p-3 bg-indigo-500 ${roleData?.isVendorSatus && 'hidden'}`}>
         <p>logo</p>
         <button
           className="flex items-center gap-2 justify-center lg:hidden "
@@ -51,9 +49,9 @@ const Dashboard = () => {
             </button>
           </div>
           <div className="bg-indigo-600 h-screen py-5">
-            {isAdmin ? (
+            {roleData?.isAdmin ? (
               <AdminSidebar></AdminSidebar>
-            ) : isVendor ? (
+            ) : roleData?.isVendor ? (
               <VendorSidebar></VendorSidebar>
             ) : (
               <UserSidebar></UserSidebar>
@@ -68,12 +66,12 @@ const Dashboard = () => {
       <div className="grid grid-cols-12 gap-5">
         <div
           className={`hidden lg:col-span-2 bg-indigo-600 h-screen p-7 lg:${
-            isVendorSatus ? "hidden" : "block"
+            roleData?.isVendorSatus ? "hidden" : "block"
           }`}
         >
-          {isAdmin ? (
+          {roleData?.isAdmin ? (
             <AdminSidebar></AdminSidebar>
-          ) : isVendor ? (
+          ) : roleData?.isVendor ? (
             <VendorSidebar></VendorSidebar>
           ) : (
             <UserSidebar></UserSidebar>
@@ -83,11 +81,11 @@ const Dashboard = () => {
         </div>
         <div
           className={`col-span-full p-3 lg:p-7 lg:${
-            isVendorSatus && "col-span-full"
-          } lg:col-span-10`}
+            roleData?.isVendorSatus && "col-span-full"
+          } lg:col-span-full`}
         >
-          {isVendorSatus ? (
-            <p className="flex flex-col items-center justify-center h-screen text-3xl md:text-4xl text-center">
+          {roleData?.isVendorSatus ? (
+            <p className="text-center text-3xl flex flex-col items-center justify-center h-screen">
               ❌<br /> <br /> Wait for Admin Confirmation! <br />{" "}
               <Link
                 to={"/"}

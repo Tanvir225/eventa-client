@@ -3,10 +3,8 @@ import { Navigate, useLocation } from "react-router-dom";
 import useAuth from "../Hook/useAuth";
 import useUserRole from "../Hook/useUserRole";
 
-
-
-const AdminRoute = ({children}) => {
-  //users and loading
+const VendorRoute = ({children}) => {
+     //users and loading
   const { user, loading } = useAuth();
   
   const {roleData,Loading} = useUserRole() || {}
@@ -24,11 +22,11 @@ const AdminRoute = ({children}) => {
     );
   }
 
-  if (!user || !roleData?.isAdmin ) {
+  if (!user || !roleData?.isVendor ) {
     return <Navigate to={"/"} state={{ from: location }} replace />;
   }
 
   return children;
 };
 
-export default AdminRoute;
+export default VendorRoute;
