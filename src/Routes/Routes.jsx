@@ -20,6 +20,7 @@ import AdminHome from "../Pages/Dashboard/Admin/AdminHome";
 import AdminRoute from "./AdminRoute";
 import VendorHome from "../Pages/Dashboard/Vendor/VendorHome";
 import VendorRoute from "./VendorRoute";
+import VendorUpdateProfile from "../Pages/Dashboard/Vendor/VendorUpdateProfile";
 
 
 const router = createBrowserRouter([
@@ -107,7 +108,11 @@ const router = createBrowserRouter([
       {
         path:"vendor-home",
         element: <VendorRoute><VendorHome></VendorHome></VendorRoute>
-      }
+      },
+      {
+        path:"update-profile",
+        element: <VendorRoute><VendorUpdateProfile></VendorUpdateProfile></VendorRoute>
+      },
     ]
   }
 ]);

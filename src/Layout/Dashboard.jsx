@@ -61,7 +61,7 @@ const Dashboard = () => {
           </div>
         </div>
       </Drawer>
-      {/* filter in mobile device */}
+      {/* menu in mobile device */}
 
       <div className="grid grid-cols-12 gap-5">
         <div
@@ -80,9 +80,7 @@ const Dashboard = () => {
           <SharedSidebar></SharedSidebar>
         </div>
         <div
-          className={`col-span-full p-3 lg:p-7 lg:${
-            roleData?.isVendorSatus && "col-span-full"
-          } lg:col-span-full`}
+          className={`col-span-full p-7 lg:${roleData?.isVendorSatus && "col-span-full"} lg:col-span-10`}
         >
           {roleData?.isVendorSatus ? (
             <p className="text-center text-3xl flex flex-col items-center justify-center h-screen">

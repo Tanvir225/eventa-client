@@ -24,7 +24,7 @@ const VendorSignUp = () => {
   const axios = usePublicAxios()
 
   // array of options  for select dropdown
-  const options = ["Convention Hall", "Car", "Flower", "Photographer"];
+  const options = ["Convention Hall", "Car", "Flower", "Photographer","Parlour"];
 
   //password  visibility toggle
   const handlePasswordShow = () => {
