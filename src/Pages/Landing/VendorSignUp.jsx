@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
 import { FaArrowLeft, FaEye, FaEyeSlash } from "react-icons/fa";
 import { Link, useNavigate } from "react-router-dom";
@@ -14,8 +14,12 @@ const VendorSignUp = () => {
   //state
   const [showPassword, setIsShowPassword] = useState(false);
   const [isOpen, setIsOpen] = useState(false);
+  const [isOpenArea, setIsOpenArea] = useState(false);
   const [selectedValue, setSelectedValue] = useState("Select vendor type");
   const [Loading, setLoading] = useState(false);
+  const [options,setOptions] = useState()
+  const [selectArea,setSelectArea] = useState('Please select your area!')
+  const [area,setArea] = useState()
 
   //useAuth hook call
   const { signUp } = useAuth();
@@ -23,8 +27,24 @@ const VendorSignUp = () => {
   //usePublicAxios calling
   const axios = usePublicAxios()
 
-  // array of options  for select dropdown
-  const options = ["Convention Hall", "Car", "Flower", "Photographer","Parlour"];
+  // vendorType api calling
+  useEffect(()=>{
+   const getVendorType = async()=>{
+    const type = await axios.get("/vendor-types")
+    setOptions(type?.data)
+   }
+   getVendorType()
+  },[axios])
+  
+  // vendor area api calling
+  useEffect(()=>{
+   const getArea = async()=>{
+    const area = await axios.get("/vendor-area")
+    setArea(area?.data)
+   }
+   getArea()
+  },[axios])
+  
 
   //password  visibility toggle
   const handlePasswordShow = () => {
@@ -77,6 +97,7 @@ const VendorSignUp = () => {
         phone:phone,
         vendor:selectedValue,
         password:password,
+        area:selectArea,
         photoURL:imgHosting?.result?.data?.data?.display_url,
         createdAt: new Date().toLocaleString("en-US",{timeZone:"Asia/Dhaka"}),
         status:'pending'
@@ -96,14 +117,14 @@ const VendorSignUp = () => {
   };
 
   return (
-    <div className="flex flex-col h-screen items-center justify-center space-y-5 bg-base-100 p-5 md:p-5">
+    <div className="flex flex-col h-screen items-center justify-center space-y-3 bg-base-100 p-5 md:p-2">
       <div className="flex justify-between w-[90%] lg:w-[80%]  items-center">
         <Link to={"/"} className="  text-black flex items-center gap-2">
           <FaArrowLeft size={26} className=""></FaArrowLeft> go home
         </Link>
         <p>logo</p>
       </div>
-      <div className="flex h-full w-full overflow-hidden rounded-xl shadow-md  md:h-[100%] md:w-[80%] lg:h-[100%]">
+      <div className="flex h-full w-full overflow-hidden rounded-xl shadow-md  md:h-[100%] md:w-[80%] lg:h-screen">
         {/* register design side  */}
         <div className="relative hidden h-full items-center justify-center bg-indigo-400 md:flex md:w-[60%] lg:w-[40%]">
           <div className="absolute bottom-[18%] left-[20%] h-20 w-20 rounded-full bg-gradient-to-br  from-white via-[#60b5fa] to-[#6585dd]"></div>
@@ -146,7 +167,7 @@ const VendorSignUp = () => {
               required
             />
 
-            {/* dropdown - btn */}
+            {/* dropdown for vendor type - btn */}
             <div className="w-[80%] md:w-[60%]  relative">
               <div
                 onClick={() => setIsOpen(!isOpen)}
@@ -184,7 +205,7 @@ const VendorSignUp = () => {
               <div
                 className={`${
                   isOpen
-                    ? "visible top-7 bg-base-100 border-2 border-indigo-400"
+                    ? "visible top-7 bg-base-100 overflow-y-auto h-60 border-2 border-indigo-400"
                     : "hidden -top-4 opacity-0"
                 } absolute z-20 mx-auto my-4 w-full rounded-xl py-4 border duration-500`}
               >
@@ -196,6 +217,64 @@ const VendorSignUp = () => {
                       setIsOpen(false);
                     }}
                     className="px-6 py-2 text-gray-800 z-20 bg-slate-50 hover:bg-indigo-400 hover:text-white"
+                  >
+                    {option}
+                  </div>
+                ))}
+              </div>
+            </div>
+
+            
+            {/* dropdown for vendor area - btn */}
+            <div className="w-[80%] md:w-[60%]  relative">
+              <div
+                onClick={() => setIsOpenArea(!isOpenArea)}
+                className=" flex  items-center justify-between rounded-xl px-6 py-2 bg-white border  border-indigo-400"
+              >
+                <h1 className=" text-gray-600">{selectArea}</h1>
+                <svg
+                  className={`${
+                    isOpenArea ? "-rotate-180" : "rotate-0"
+                  } duration-300`}
+                  width={25}
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <g strokeWidth="0"></g>
+                  <g
+                    id="SVGRepo_tracerCarrier"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                  ></g>
+                  <g id="SVGRepo_iconCarrier">
+                    <path
+                      d="M7 10L12 15L17 10"
+                      stroke="#4B5563"
+                      strokeWidth="1.5"
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                    ></path>{" "}
+                  </g>
+                </svg>
+              </div>
+
+              {/* dropdown - options  */}
+              <div
+                className={`${
+                  isOpenArea
+                    ? "visible top-7 bg-base-100 border-2 overflow-y-auto h-60 border-indigo-400"
+                    : "hidden -top-4 opacity-0"
+                } absolute z-20 mx-auto my-4 w-full rounded-xl py-4 border duration-500`}
+              >
+                {area?.map((option, idx) => (
+                  <div
+                    key={idx}
+                    onClick={(e) => {
+                      setSelectArea(e.target.textContent);
+                      setIsOpenArea(false);
+                    }}
+                    className="px-6  py-2 text-gray-800 z-20 bg-slate-50 hover:bg-indigo-400 hover:text-white"
                   >
                     {option}
                   </div>

@@ -103,6 +103,7 @@ const Users = () => {
             <th className="px-6 py-4 ">Name</th>
             <th className="px-6 py-4 ">Email</th>
             <th className="px-6 py-4 ">Role</th>
+            <th className="px-6 py-4 ">Area</th>
             <th className="px-6 py-4 ">Vendor</th>
             <th className="px-6 py-4 ">Status</th>
             <th className="px-6 py-4 ">
@@ -134,6 +135,7 @@ const Users = () => {
               <td>{user.name}</td>
               <td>{user.email}</td>
               <td>{user.role}</td>
+              <td>{user.area}</td>
               <td>{user?.vendor ? user?.vendor : "...."}</td>
               <td>
                 {user?.status === "pending" ? (
