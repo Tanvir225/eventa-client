@@ -1,4 +1,4 @@
-import VendorProfileForm from "../../../Component/Dashboard/Form/VendorProfileForm";
+import VendorProfileForm from "../../../Component/Dashboard/Form/HallVendorProfileForm";
 import useAuth from "../../../Hook/useAuth";
 import useUserRole from "../../../Hook/useUserRole";
 

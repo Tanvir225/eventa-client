@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { useForm } from "react-hook-form";
 import { FaArrowLeft, FaEye, FaEyeSlash } from "react-icons/fa";
 import { Link, useNavigate } from "react-router-dom";
@@ -10,6 +10,8 @@ import { updateProfile } from "firebase/auth";
 import toast from "react-hot-toast";
 import { ClockLoader } from "react-spinners";
 import usePublicAxios from "../../Hook/usePublicAxios";
+import useVendorArea from "../../Hook/useVendorArea";
+import useVendorType from "../../Hook/useVendorType";
 const VendorSignUp = () => {
   //state
   const [showPassword, setIsShowPassword] = useState(false);
@@ -17,34 +19,19 @@ const VendorSignUp = () => {
   const [isOpenArea, setIsOpenArea] = useState(false);
   const [selectedValue, setSelectedValue] = useState("Select vendor type");
   const [Loading, setLoading] = useState(false);
-  const [options,setOptions] = useState()
-  const [selectArea,setSelectArea] = useState('Please select your area!')
-  const [area,setArea] = useState()
+  const [selectArea, setSelectArea] = useState("Please select your area!");
+
+  //useVendorArea hook calling
+  const [area] = useVendorArea();
+
+  //useVendorType hook calling
+  const [options] = useVendorType();
 
   //useAuth hook call
   const { signUp } = useAuth();
 
   //usePublicAxios calling
-  const axios = usePublicAxios()
-
-  // vendorType api calling
-  useEffect(()=>{
-   const getVendorType = async()=>{
-    const type = await axios.get("/vendor-types")
-    setOptions(type?.data)
-   }
-   getVendorType()
-  },[axios])
-  
-  // vendor area api calling
-  useEffect(()=>{
-   const getArea = async()=>{
-    const area = await axios.get("/vendor-area")
-    setArea(area?.data)
-   }
-   getArea()
-  },[axios])
-  
+  const axios = usePublicAxios();
 
   //password  visibility toggle
   const handlePasswordShow = () => {
@@ -89,24 +76,24 @@ const VendorSignUp = () => {
         photoURL: imgHosting?.result?.data?.data?.display_url,
       });
 
-      
       //sava user into database
       const userInfo = {
-        name:name,
-        email:email,
-        phone:phone,
-        vendor:selectedValue,
-        password:password,
-        area:selectArea,
-        photoURL:imgHosting?.result?.data?.data?.display_url,
-        createdAt: new Date().toLocaleString("en-US",{timeZone:"Asia/Dhaka"}),
-        status:'pending'
-      }
+        name: name,
+        email: email,
+        phone: phone,
+        vendor: selectedValue,
+        password: password,
+        area: selectArea,
+        photoURL: imgHosting?.result?.data?.data?.display_url,
+        createdAt: new Date().toLocaleString("en-US", {
+          timeZone: "Asia/Dhaka",
+        }),
+        status: "pending",
+      };
 
-      axios.post("/users",userInfo)
-      .then(result=>{
+      axios.post("/users", userInfo).then((result) => {
         console.log(result);
-      })
+      });
 
       toast.success("Account has been created");
       reset();
@@ -224,7 +211,6 @@ const VendorSignUp = () => {
               </div>
             </div>
 
-            
             {/* dropdown for vendor area - btn */}
             <div className="w-[80%] md:w-[60%]  relative">
               <div
