@@ -8,8 +8,6 @@ const HallVendorProfileForm = ({ vendorName }) => {
   const [selectArea, setSelectArea] = useState("Please select your area!");
   const [facalities, seFacalities] = useState([]);
 
-  
-
   //useVendorArea hook calling
   const [area] = useVendorArea();
   //axios hook calling
@@ -144,8 +142,25 @@ const HallVendorProfileForm = ({ vendorName }) => {
           </label>
           <label className="">
             Choose Facalities
-            <Select className="" isMulti options={facalities}></Select>
+            <Select className="mt-1 p-1" isMulti options={facalities}></Select>
           </label>
+        </div>
+
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
+          <textarea
+            className="textarea textarea-bordered text-indigo-700"
+            placeholder="type your description here"
+            rows={5}
+          ></textarea>
+          <textarea
+            className="textarea textarea-bordered text-indigo-700"
+            placeholder="terms and condition"
+            rows={5}
+          ></textarea>
+        </div>
+
+        <div className="text-center">
+          <button className="btn btn-outline bg-indigo-600 text-white w-52" type="submit">Update Profile</button>
         </div>
       </form>
     </div>

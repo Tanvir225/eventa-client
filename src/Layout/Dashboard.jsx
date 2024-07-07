@@ -21,7 +21,7 @@ const Dashboard = () => {
   };
 
   return (
-    <section className="xl:max-w-7xl xl:mx-auto">
+    <section className="max-xl:max-w-7xl max-xl:mx-auto">
       {/* menu in mobile device */}
       <div className={`lg:hidden flex justify-between sicky z-20 text-white p-3 bg-indigo-500 ${roleData?.isVendorSatus && 'hidden'}`}>
         <p>logo</p>
