@@ -9,14 +9,14 @@ import toast from "react-hot-toast";
 import useUserRole from "../../../Hook/useUserRole";
 
 const Navbar = () => {
-  
+  let profileStatus = true;
   const [navbarFixed, setNavbarFixed] = useState(false);
 
   //useAuth hook calling
   const { user, logOut } = useAuth();
 
   //useUserRole hook calling
-  const {roleData} = useUserRole();
+  const { roleData } = useUserRole();
   const { isAdmin, isVendor } = roleData || {};
 
   //logout functionality
@@ -91,6 +91,7 @@ const Navbar = () => {
                     <li className="border-b-2 justify-between text-sky-400 p-2">
                       {user?.displayName}
                     </li>
+                   
                     {user && isAdmin && (
                       <li>
                         <Link to={"/dashboard/admin-home"}>Dashboard</Link>

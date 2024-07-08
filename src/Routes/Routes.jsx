@@ -21,6 +21,7 @@ import AdminRoute from "./AdminRoute";
 import VendorHome from "../Pages/Dashboard/Vendor/VendorHome";
 import VendorRoute from "./VendorRoute";
 import VendorUpdateProfile from "../Pages/Dashboard/Vendor/VendorUpdateProfile";
+import CreateVendorProfile from "../Pages/Dashboard/Vendor/CreateVendorProfile";
 
 
 const router = createBrowserRouter([
@@ -72,6 +73,10 @@ const router = createBrowserRouter([
   {
     path: "/vendor-sign-up",
     element: <VendorSignUp></VendorSignUp>,
+  },
+  {
+    path: "/create-vendor-profile",
+    element: <CreateVendorProfile></CreateVendorProfile>,
   },
 
   //dashboard route

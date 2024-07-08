@@ -2,11 +2,14 @@ import { useEffect, useState } from "react";
 import useVendorArea from "../../../Hook/useVendorArea";
 import usePublicAxios from "../../../Hook/usePublicAxios";
 import Select from "react-select";
+import { useForm } from "react-hook-form";
+import ImageUpload from "../../../Utils/ImageUpload";
 
-const HallVendorProfileForm = ({ vendorName }) => {
+const HallVendorProfileForm = ({ vendorName,vendorEmail }) => {
   const [isOpenArea, setIsOpenArea] = useState(false);
   const [selectArea, setSelectArea] = useState("Please select your area!");
   const [facalities, seFacalities] = useState([]);
+  const [selectedFacalities, setSelectedFacalities] = useState([]);
 
   //useVendorArea hook calling
   const [area] = useVendorArea();
@@ -23,9 +26,60 @@ const HallVendorProfileForm = ({ vendorName }) => {
     getFacalities();
   }, [axios]);
 
+  //get facalitied
+  const handleChangeFacalities = async(selectedFacalities)=>{
+    setSelectedFacalities(selectedFacalities)
+  }
+
+  
+  //user-sign-up functionality
+  const { register, handleSubmit, reset } = useForm();
+
+  const onSubmit = async(data)=>{
+    const name = data?.name
+    const live_location = data?.live_location
+    const description = data?.description
+    const capacity = data?.capacity
+    const hall_cost = data?.hall_cost
+    const terms_condition = data?.terms_condition
+    
+    //image upoload
+     const imageFile = { image: data?.image[0] };
+     console.log(imageFile);
+    try{
+      const imageHost = await ImageUpload({imageFile:imageFile})
+      console.log(imageHost?.result?.data);
+
+      //path vendor data into databse
+      const vendorUpdate = {
+        vendor_name:vendorName,
+        vendor_email:vendorEmail,
+        name: name,
+        business_thumbnail: imageHost?.result?.data?.data?.display_url,
+        live_location:live_location,
+        location:selectArea,
+        capacity:capacity,
+        hall_cost:hall_cost,
+        facalities:selectedFacalities,
+        description:description,
+        terms_condition:terms_condition,
+
+      }
+    } catch(error){
+      console.log(error)
+    }
+
+
+    reset()
+
+
+  }
+
+
+
   return (
     <div className="my-5">
-      <form className="space-y-5">
+      <form className="space-y-5" onSubmit={handleSubmit(onSubmit)}>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
           <label className="input input-bordered flex items-center gap-2">
             Vendor Name
@@ -34,6 +88,7 @@ const HallVendorProfileForm = ({ vendorName }) => {
               className="grow text-indigo-700"
               defaultValue={vendorName}
               disabled
+              {...register('vendor_name')}
             />
           </label>
           <label className="input input-bordered flex items-center gap-2">
@@ -42,6 +97,8 @@ const HallVendorProfileForm = ({ vendorName }) => {
               type="text"
               className="grow text-indigo-700"
               placeholder="Xin Xian"
+              {...register("name")}
+              required
             />
           </label>
         </div>
@@ -53,6 +110,8 @@ const HallVendorProfileForm = ({ vendorName }) => {
               type="text"
               className="grow text-indigo-700"
               placeholder="map location"
+              {...register("live_location")}
+              required
             />
           </label>
           <label className="input input-bordered flex items-center gap-2">
@@ -61,6 +120,8 @@ const HallVendorProfileForm = ({ vendorName }) => {
               type="number"
               className="grow text-indigo-700"
               placeholder="15000"
+              {...register("hall_cost")}
+              required
             />
           </label>
         </div>
@@ -128,21 +189,26 @@ const HallVendorProfileForm = ({ vendorName }) => {
               type="number"
               className="grow text-indigo-700"
               placeholder="500"
+              {...register("capacity")}
+              required
             />
           </label>
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
           <label className="">
-            Upload photo
+            Business Thumnail
             <input
               type="file"
               className="file-input file-input-bordered mt-1 file-input-ghost  w-full"
+              name="image"
+              {...register("image")}
+              required
             />
           </label>
           <label className="">
             Choose Facalities
-            <Select className="mt-1 p-1" isMulti options={facalities}></Select>
+            <Select className="mt-1 p-1" isMulti options={facalities} onChange={handleChangeFacalities} required ></Select>
           </label>
         </div>
 
@@ -151,11 +217,14 @@ const HallVendorProfileForm = ({ vendorName }) => {
             className="textarea textarea-bordered text-indigo-700"
             placeholder="type your description here"
             rows={5}
+            {...register("description")}
+            required
           ></textarea>
           <textarea
             className="textarea textarea-bordered text-indigo-700"
             placeholder="terms and condition"
             rows={5}
+            {...register("terms_condition")}
           ></textarea>
         </div>
 

@@ -12,13 +12,13 @@ const VendorUpdateProfile = () => {
 
   
   return (
-    <div>
+    <div className="">
       <h2 className="text-xl font-bold">
         Hey! <span className="text-blue-600">{`${user?.displayName}`}</span>{" "}
         update your profile
       </h2>
       {
-        roleData?.vendorType==='hall' ? <VendorProfileForm vendorName={user?.displayName}></VendorProfileForm>:""
+        roleData?.vendorType==='hall' ? <VendorProfileForm vendorName={user?.displayName} vendorEmail={user?.email}></VendorProfileForm>:""
       }
     </div>
   );

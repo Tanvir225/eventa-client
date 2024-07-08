@@ -6,12 +6,29 @@ import SharedSidebar from "../Component/Dashboard/SharedSidebar/SharedSidebar";
 import VendorSidebar from "../Component/Dashboard/VendorSidebar.jsx/VendorSidebar";
 import useUserRole from "../Hook/useUserRole";
 import { FaAlignLeft } from "react-icons/fa";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Drawer from "react-modern-drawer";
+import useAuth from "../Hook/useAuth";
+import usePublicAxios from "../Hook/usePublicAxios";
 
 const Dashboard = () => {
   //useUserRole hook call
   const {roleData} = useUserRole();
+
+  //useAuth hook calling
+  const {user} = useAuth()
+
+  //publicAxios hook calling
+  const axios = usePublicAxios()
+
+  useEffect(()=>{
+    const getProfileStatus = async()=>{
+        const profileStatus = await axios.get(`/vendor-profile/${user?.email}`)
+        console.log(profileStatus?.data);
+    }
+
+    getProfileStatus()
+  },[axios,user?.email])
 
   //drawer state
   const [isOpen, setIsOpen] = useState(false);
@@ -21,7 +38,7 @@ const Dashboard = () => {
   };
 
   return (
-    <section className="max-xl:max-w-7xl max-xl:mx-auto">
+    <section className="max-xl:max-w-7xl max-xl:mx-auto ">
       {/* menu in mobile device */}
       <div className={`lg:hidden flex justify-between sicky z-20 text-white p-3 bg-indigo-500 ${roleData?.isVendorSatus && 'hidden'}`}>
         <p>logo</p>
@@ -65,7 +82,7 @@ const Dashboard = () => {
 
       <div className="grid grid-cols-12 gap-5">
         <div
-          className={`hidden lg:col-span-2 bg-indigo-600 h-screen p-7 lg:${
+          className={`hidden lg:col-span-2 bg-indigo-600 h-screen  p-7 lg:${
             roleData?.isVendorSatus ? "hidden" : "block"
           }`}
         >
